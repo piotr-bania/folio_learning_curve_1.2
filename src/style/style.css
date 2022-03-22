@@ -308,6 +308,10 @@ section {
   transition: 0.3s ease-in-out;
 }
 
+canvas {
+  position: fixed;
+}
+
 strong {
   color: var(--green);
 }
