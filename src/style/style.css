@@ -1,11 +1,21 @@
 @font-face {
   font-family: "Expansiva";
-  src: url(/src/assets/fonts/expansiva/Expansiva.otf);
+  src: url(/src/assets/fonts/Expansiva/Expansiva.otf);
 }
 
 @font-face {
   font-family: "Expansiva Bold";
-  src: url(/src/assets/fonts/expansiva/Expansiva-bold.otf);
+  src: url(/src/assets/fonts/Expansiva/Expansiva-bold.otf);
+}
+
+@font-face {
+  font-family: "Arkitech Light";
+  src: url(/src/assets/fonts/Arkitech/Arkitech-Light.ttf);
+}
+
+@font-face {
+  font-family: "Arkitech Medium";
+  src: url(/src/assets/fonts/Arkitech/Arkitech-Medium.ttf);
 }
 
 :root {
@@ -23,8 +33,10 @@
   --background-text: rgba(113, 97, 245, 0.05);
   --grey-text: #ABABAB;
   --body-font: 'obvia';
-  --header-font: 'Expansiva';
-  --header-font-bold: 'Expansiva Bold';
+  --header-font: 'Arkitech Light';
+  --header-font-bold: 'Arkitech Medium';
+  --header-alternative: 'Expansiva';
+  --header-alternative-bold: 'Expansiva Bold';
   --normal-font-size: 1rem;
   --small-font-size: 0.9rem;
   --main-shadow:
@@ -65,11 +77,9 @@ html {
 }
 
 body {
-  background-image: -webkit-gradient(linear, left top, right top, from(var(--darker)), to(var(--dark)));
-  background-image: linear-gradient(to right, var(--darker), var(--dark));
   font-family: var(--body-font);
   font-size: var(--normal-font-size);
-  line-height: 1.5;
+  line-height: 1.6;
   color: var(--light);
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -78,38 +88,29 @@ body {
 }
 
 h1 {
-  font-family: var(--header-font-bold);
-  font-size: clamp(1.383rem, 7vmin, 3.052rem);
-  color: var(--purple);
+  font-family: var(--header-font);
+  font-size: clamp(1.215rem, 7vmin, 2.488rem);
+  line-height: 1.4;
+  color: var(--lighter);
 }
 
 h2 {
   font-family: var(--header-font);
-  font-size: clamp(1.296rem, 5.6vmin, 2.441rem);
-  color: var(--purple-blue);
+  font-size: clamp(1.138rem, 5.6vmin, 1.728rem);
+  line-height: 1.4;
+  color: var(--purple);
 }
 
 h3 {
   font-family: var(--header-font);
-  font-size: clamp(1.215rem, 4.5vmin, 1.953rem);
+  font-size: clamp(1.067rem, 4.5vmin, 1.2rem);
+  line-height: 1.4;
   color: var(--blue-turqupise);
-}
-
-h4 {
-  font-family: var(--header-font);
-  font-size: clamp(1.138rem, 3.6vmin, 1.563rem);
-  color: var(--turquoise);
-}
-
-h5 {
-  font-family: var(--header-font);
-  font-size: clamp(1.067rem, 2.85vmin, 1.25rem);
-  color: var(--grey-text);
 }
 
 p {
   font-family: var(--body-font);
-  font-size: clamp(0.9rem, 2.85vmin, 1.25rem);
+  font-size: clamp(0.878rem, 2.85vmin, 1rem);
 }
 
 section {
@@ -136,7 +137,7 @@ section {
   background-image: url(/src/assets/images/backgrounds/Piotr-Bania.svg);
   background-position: center;
   background-repeat: no-repeat;
-  background-size: auto;
+  background-size: 100%;
 }
 
 #section-a h1 {
@@ -313,6 +314,7 @@ canvas {
 }
 
 strong {
+  font-family: var(--header-alternative);
   color: var(--green);
 }
 
