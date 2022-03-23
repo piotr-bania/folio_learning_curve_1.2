@@ -21,6 +21,8 @@ const canvas_1 = document.querySelector('canvas.canvas-1')
 
 const scene = new THREE.Scene()
 
+// ----------------- Particles -----------------
+
 
 // ----------------- Sizes -----------------
 
@@ -38,18 +40,26 @@ camera.position.z = 6
 
 // ----------------- Lights -----------------
 
-const light = new THREE.DirectionalLight(0xffffff, 1)
-light.position.set(0, 5, 10)
-scene.add(light)
+// const light = new THREE.PointLight(0xffffff, 1)
+// light.position.set(-1, -2, 5)
+// scene.add(light)
 
 // ----------------- 3d models -----------------
 
 const sphere = new GLTFLoader()
 sphere.load('../src/assets/models/sphere/Sphere.gltf', function (gltf) {
+    gltf.scene.position.set(0, 0, 0)
     scene.add(gltf.scene)
+
 })
 
+// ----------------- HDRI -----------------
 
+new RGBELoader()
+    .load("../src/assets/images/HDRI/abandoned_workshop_1k.hdr", function (texture) {
+        texture.mapping = THREE.EquirectangularReflectionMapping
+        scene.environment = texture
+    })
 
 // ----------------- Render -----------------
 
@@ -59,52 +69,20 @@ const renderer = new THREE.WebGLRenderer({
     alpha: true
 })
 
+renderer.toneMapping = THREE.ACESFilmicToneMapping
+renderer.toneMappingExposure = 0.15
+renderer.outputEncoding = THREE.sRGBEncoding
+
 renderer.setSize(sizes.width, sizes.height)
 document.body.appendChild(renderer.domElement)
 
-// ----------------- Rotation -----------------
+// ----------------- Orbit controls -----------------
 
-// controls = new OrbitControls(camera, renderer.domElement)
-
-
-
-
-
-
-// ----------------- Mesh -----------------
-
-// const geometry = new THREE.IcosahedronGeometry(1, 15)
-// const hdrEquirect = new RGBELoader().load(
-//     "../src/assets/images/HDRI/goegap_2k.hdr",
-//     () => {
-//         hdrEquirect.mapping = THREE.EquirectangularReflectionMapping
-//     }
-// )
-
-// const textureLoader = new THREE.TextureLoader()
-// const normalMapTexture = textureLoader.load("../src/assets/images/textures/GravelBig01_2K_Normal.png")
-// normalMapTexture.wrapS = THREE.RepeatWrapping
-// normalMapTexture.wrapT = THREE.RepeatWrapping
-
-// const material = new THREE.MeshPhysicalMaterial({
-//     roughness: 0.1,
-//     transmission: 0.9,
-//     thickness: 0.9,
-//     envMap: hdrEquirect
-// })
-
-// const mesh = new THREE.Mesh(geometry, material)
-// scene.add(mesh)
-
-// const bgTexture = new THREE.TextureLoader().load("../src/assets/images/textures/GravelBig01_2K_Normal.png");
-// const bgGeometry = new THREE.PlaneGeometry(4, 4)
-// const bgMaterial = new THREE.MeshBasicMaterial({
-//     map: bgTexture
-// })
-// const bgMesh = new THREE.Mesh(bgGeometry, bgMaterial)
-// bgMesh.position.set(0, 0, -1)
-// scene.add(bgMesh)
-
+const controls = new OrbitControls(camera, renderer.domElement)
+controls.autoRotate = true
+controls.autoRotateSpeed = -0.25
+controls.enableDamping = true
+controls.enableZoom = false
 // ----------------- Helpers -----------------
 
 // const gridHelper = new THREE.GridHelper(10, 10)
@@ -116,6 +94,7 @@ document.body.appendChild(renderer.domElement)
 
 function animate() {
     requestAnimationFrame(animate)
+    controls.update()
     renderer.render(scene, camera)
 }
 animate()
