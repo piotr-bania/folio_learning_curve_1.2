@@ -21,8 +21,38 @@ const canvas_1 = document.querySelector('canvas.canvas-1')
 
 const scene = new THREE.Scene()
 
+// ----------------- Textures -----------------
+
+const textureLoader = new THREE.TextureLoader()
+const particleTexture = textureLoader.load('../src/assets/particles/twirl_03.png')
+
 // ----------------- Particles -----------------
 
+// Geometry
+const particlesGeometry = new THREE.BufferGeometry()
+const count = 10000
+
+const positions = new Float32Array(count * 3)
+for (let i = 0; i < count * 3; i++) {
+    positions[i] = (Math.random() - 0.5) * 10
+}
+
+particlesGeometry.setAttribute(
+    'position',
+    new THREE.BufferAttribute(positions, 3)
+)
+
+// Material
+const particlesMaterial = new THREE.PointsMaterial()
+particlesMaterial.size = 0.025
+particlesMaterial.sizeAttenuation = true
+particlesMaterial.color = new THREE.Color('#ABABAB')
+particlesMaterial.transparent = true
+particlesMaterial.alphaMap = particleTexture
+
+// Points
+const particles = new THREE.Points(particlesGeometry, particlesMaterial)
+scene.add(particles)
 
 // ----------------- Sizes -----------------
 
@@ -40,9 +70,9 @@ camera.position.z = 6
 
 // ----------------- Lights -----------------
 
-// const light = new THREE.PointLight(0xffffff, 1)
-// light.position.set(-1, -2, 5)
-// scene.add(light)
+const light = new THREE.PointLight(0xffffff, 2)
+light.position.set(-2, -1, 0)
+scene.add(light)
 
 // ----------------- 3d models -----------------
 
@@ -50,7 +80,6 @@ const sphere = new GLTFLoader()
 sphere.load('../src/assets/models/sphere/Sphere.gltf', function (gltf) {
     gltf.scene.position.set(0, 0, 0)
     scene.add(gltf.scene)
-
 })
 
 // ----------------- HDRI -----------------
@@ -83,6 +112,7 @@ controls.autoRotate = true
 controls.autoRotateSpeed = -0.25
 controls.enableDamping = true
 controls.enableZoom = false
+
 // ----------------- Helpers -----------------
 
 // const gridHelper = new THREE.GridHelper(10, 10)
