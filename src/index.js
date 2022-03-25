@@ -76,11 +76,18 @@ scene.add(light)
 
 // ----------------- 3d models -----------------
 
-const sphere = new GLTFLoader()
+let sphere = new GLTFLoader()
 sphere.load('../src/assets/models/sphere/Sphere.gltf', function (gltf) {
+    sphere = gltf.scene
+    // gltf.scene.scale.set(1, 1, 1)
     gltf.scene.position.set(0, 0, 0)
-    scene.add(gltf.scene)
+
+    scene.add(sphere)
+
+    gsap.to(sphere.rotation, { duration: 100, delay: 1, y: -2})
 })
+
+
 
 // ----------------- HDRI -----------------
 
@@ -107,11 +114,11 @@ document.body.appendChild(renderer.domElement)
 
 // ----------------- Orbit controls -----------------
 
-const controls = new OrbitControls(camera, renderer.domElement)
-controls.autoRotate = true
-controls.autoRotateSpeed = -0.25
-controls.enableDamping = true
-controls.enableZoom = false
+// const controls = new OrbitControls(camera, renderer.domElement)
+// controls.autoRotate = true
+// controls.autoRotateSpeed = -0.25
+// controls.enableDamping = true
+// controls.enableZoom = false
 
 // ----------------- Helpers -----------------
 
@@ -120,11 +127,15 @@ controls.enableZoom = false
 // const axesHelper = new THREE.AxesHelper(5)
 // scene.add(axesHelper)
 
+// ----------------- Clock -----------------/
+
+
+
 // ----------------- Animation -----------------
 
 function animate() {
     requestAnimationFrame(animate)
-    controls.update()
+    // controls.update()
     renderer.render(scene, camera)
 }
 animate()
