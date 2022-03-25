@@ -77,16 +77,53 @@ scene.add(light)
 
 // ----------------- 3d models -----------------
 
-let sphere = new GLTFLoader()
-sphere.load('../src/assets/models/sphere/Sphere.gltf', function (gltf) {
-    sphere = gltf.scene
+let modelsDistance = 2
+
+// Model 1
+
+let model_1 = new GLTFLoader()
+model_1.load('../src/assets/models/sphere/Sphere.gltf', function (gltf) {
+    model_1 = gltf.scene
     // gltf.scene.scale.set(1, 1, 1)
-    gltf.scene.position.set(0, .1, 0)
-    scene.add(sphere)
+    // gltf.scene.position.set(0, 0, 0)
+    gltf.scene.position.y = - modelsDistance * 0
+    scene.add(model_1)
     
     // Animation
-    gsap.to(sphere.rotation, { duration: 500, delay: 0, x: -5, y: -10, z: -1, repeat: -1})
+    gsap.to(model_1.rotation, { duration: 500, delay: 0, y: -15, repeat: -1})
 })
+
+// Model 2
+
+let model_2 = new GLTFLoader()
+model_2.load('../src/assets/models/sphere/Sphere.gltf', function (gltf) {
+    model_2 = gltf.scene
+    // gltf.scene.scale.set(1, 1, 1)
+    // gltf.scene.position.set(-2.5, -4, 0)
+    gltf.scene.position.y = - modelsDistance * 4
+    scene.add(model_2)
+    
+    // Animation
+    gsap.to(model_2.rotation, { duration: 500, delay: 0, y: -15, repeat: -1})
+})
+
+// Model 2
+
+let model_3 = new GLTFLoader()
+model_3.load('../src/assets/models/sphere/Sphere.gltf', function (gltf) {
+    model_3 = gltf.scene
+    // gltf.scene.scale.set(1, 1, 1)
+    // gltf.scene.position.set(0.5, -8, 0)
+    gltf.scene.position.y = - modelsDistance * 8
+    scene.add(model_3)
+    
+    // Animation
+    gsap.to(model_3.rotation, { duration: 500, delay: 0, y: -15, repeat: -1})
+})
+
+// ----------------- Section paralax -----------------
+
+const sectionModels = [model_1, model_2, model_3]
 
 // ----------------- HDRI -----------------
 
@@ -143,7 +180,11 @@ document.body.appendChild(renderer.domElement)
 
 // ----------------- Clock -----------------/
 
+const clock = new THREE.Clock()
 
+const tick = () => {
+    const elapsedTime = clock.getElapsedTime()
+}
 
 // ----------------- Animation -----------------
 
