@@ -8,6 +8,7 @@
     src: url(/src/assets/fonts/Expansiva/Expansiva-bold.otf);
 
 }
+
 @font-face {
     font-family: "Arkitech Light";
     src: url(/src/assets/fonts/Arkitech/Arkitech-Light.ttf);
@@ -98,8 +99,8 @@ body {
 
 h1 {
     font-family: var(--header-font);
-    font-size: clamp(1.215rem, 7vmin, 
-    2.488rem);
+    font-size: clamp(1.215rem, 7vmin,
+            2.488rem);
     line-height: 1.4;
     color: var(--lighter);
 }
@@ -121,6 +122,10 @@ h3 {
 p {
     font-family: var(--body-font);
     font-size: clamp(0.878rem, 2.85vmin, 1rem);
+}
+
+a {
+    text-shadow: var(--main-shadow);
 }
 
 // ------------------------------ Sections ------------------------------
@@ -226,6 +231,8 @@ section {
 
 // ------------------------------ Header ------------------------------
 
+
+
 .logo {
     position: fixed;
     width: 70px;
@@ -233,6 +240,31 @@ section {
     left: 5%;
     top: 5%;
     z-index: 100;
+}
+
+.menu {
+    position: fixed;
+    width: 100%;
+    right: 10vw;
+    top: 55px;
+    z-index: 90;
+    display: flex;
+    justify-content: end;
+    align-content: center;
+    visibility: visible;
+
+    ul {
+        display: flex;
+
+        li {
+            padding-right: 3vw;
+        }
+    }
+
+    a {
+        color: var(--purple-blue);
+    }
+    
 }
 
 .open-menu {
@@ -244,6 +276,7 @@ section {
     padding: 7px;
     cursor: pointer;
     z-index: 98;
+    visibility: hidden;
 }
 
 .closed-menu {
@@ -255,6 +288,7 @@ section {
     padding: 7px;
     cursor: pointer;
     z-index: 98;
+    visibility: hidden;
 }
 
 #nav-content {
@@ -272,6 +306,7 @@ section {
     overflow: hidden;
     transform: translateX(105%);
     transition: 0.5s ease transform;
+    visibility: hidden;
 
     a {
         display: inline-block;
@@ -322,9 +357,20 @@ section {
 
 // ------------------------------ Canvas ------------------------------
 
-canvas {
-    position: fixed;
+.canvas-1 {
+    position: absolute;
+    top: 0;
+    max-width: 100%;
+    max-height: 100%;
 }
+
+// .canvas-2 {
+//     position: absolute;
+//     left: 0;
+//     max-width: 100%;
+//     max-height: 100%;
+//     background-color: #62EAF5;
+// }
 
 // ------------------------------ Hero section ------------------------------
 
@@ -363,10 +409,6 @@ span {
     width: auto;
     left: 17%;
     bottom: 10%;
-}
-
-.canvas-1 {
-    top: 0;
 }
 
 .upper-heading {
@@ -429,12 +471,13 @@ button {
     border-radius: 20px 5px 10px 10px;
     justify-content: center;
     text-align: center;
+    text-shadow: var(--main-shadow);
     white-space: nowrap;
     padding: calc(0.5em - 1px) 1em;
     padding-left: 1.5rem;
     padding-right: 1.5rem;
     border: 1px solid var(--dark);
-    background: linear-gradient(90deg, rgba(113, 97, 245, 0.75) 0%, rgba(113, 97, 245, 0) 100%);
+    background: linear-gradient(145deg, rgba(113, 97, 245, 0.7) 0%, rgba(245, 112, 97, 0.5) 100%);
     box-shadow: var(--main-shadow);
     transition: all 0.3s ease-in-out;
 }
@@ -443,8 +486,9 @@ button:hover {
     cursor: pointer;
     border: 1px solid var(--green);
     color: var(--green);
-    background: linear-gradient(90deg, rgba(113, 97, 245, 0.85) 0%, rgba(113, 97, 245, 0.25) 100%);
+    background: linear-gradient(145deg, rgba(113, 97, 245, 1) 0%, rgba(245, 112, 97, 0.8) 100%);
     box-shadow: var(--hover-shadow);
+    text-shadow: var(--hover-shadow);
 }
 
 // ------------------------------ Progress bar ------------------------------
@@ -560,10 +604,19 @@ button:hover {
         height: 50px;
     }
 
+    .menu {
+        visibility: hidden;
+    }
+
     .open-menu,
     .closed-menu {
         width: 50px;
         height: 50px;
+        visibility: visible;
+    }
+
+    #nav-content {
+        visibility: visible;
     }
 
     #nav-content .section-heading {

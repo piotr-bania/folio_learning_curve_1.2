@@ -13,9 +13,10 @@ import {
     GLTFLoader
 } from '../src/modules/GLTFLoader.js'
 
-// ----------------- Canvas 1-----------------
+// ----------------- Canvas -----------------
 
 const canvas_1 = document.querySelector('canvas.canvas-1')
+// const canvas_2 = document.querySelector('canvas.canvas-2')
 
 // ----------------- Scene -----------------
 
@@ -84,7 +85,7 @@ sphere.load('../src/assets/models/sphere/Sphere.gltf', function (gltf) {
     scene.add(sphere)
     
     // Animation
-    gsap.to(sphere.rotation, { duration: 500, delay: 0, y: -2, repeat: -1})
+    gsap.to(sphere.rotation, { duration: 500, delay: 0, y: -5, repeat: -1})
 })
 
 // ----------------- HDRI -----------------
@@ -97,6 +98,7 @@ new RGBELoader()
 
 // ----------------- Render -----------------
 
+// Render 1
 const renderer = new THREE.WebGLRenderer({
     canvas: canvas_1,
     antialias: true,
@@ -104,11 +106,25 @@ const renderer = new THREE.WebGLRenderer({
 })
 
 renderer.toneMapping = THREE.ACESFilmicToneMapping
-renderer.toneMappingExposure = 0.15
+renderer.toneMappingExposure = 0.2
 renderer.outputEncoding = THREE.sRGBEncoding
 
 renderer.setSize(sizes.width, sizes.height)
 document.body.appendChild(renderer.domElement)
+
+// // Render 2
+// const renderer_2 = new THREE.WebGLRenderer({
+//     canvas: canvas_2,
+//     antialias: true,
+//     alpha: true
+// })
+
+// renderer_2.toneMapping = THREE.ACESFilmicToneMapping
+// renderer_2.toneMappingExposure = 0.15
+// renderer_2.outputEncoding = THREE.sRGBEncoding
+
+// renderer_2.setSize(sizes.width, sizes.height)
+// document.body.appendChild(renderer_2.domElement)
 
 // ----------------- Orbit controls -----------------
 
@@ -135,6 +151,7 @@ function animate() {
     requestAnimationFrame(animate)
     // controls.update()
     renderer.render(scene, camera)
+    // renderer_2.render(scene, camera)
 }
 animate()
 
@@ -151,5 +168,6 @@ function onWindowResize() {
 
     // Update renderer
     renderer.setSize(sizes.width, sizes.height)
+    // renderer_2.setSize(sizes.width, sizes.height)
 }
 window.addEventListener('resize', onWindowResize, false);

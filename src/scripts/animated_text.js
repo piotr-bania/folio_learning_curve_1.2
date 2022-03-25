@@ -1,3 +1,5 @@
+// ----------------- Header animation -----------------
+
 const words = [
     "develop apps",
     "shape Metaverse",
@@ -28,3 +30,12 @@ words.forEach(word => {
     })
     masterTL.add(tl)
 })
+
+// // ----------------- Text animation -----------------
+
+// const textReveal = gsap.timeline()
+// textReveal.from(".line", 1.8, {
+//     y: 100, ease: "power4.out", delay: 1, skewY: 10, stagger: {
+//         amount: 0.4
+//     }
+// })

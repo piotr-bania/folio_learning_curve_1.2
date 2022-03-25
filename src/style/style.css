@@ -113,6 +113,10 @@ p {
   font-size: clamp(0.878rem, 2.85vmin, 1rem);
 }
 
+a {
+  text-shadow: var(--main-shadow);
+}
+
 section {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -221,6 +225,37 @@ section {
   z-index: 100;
 }
 
+.menu {
+  position: fixed;
+  width: 100%;
+  right: 10vw;
+  top: 55px;
+  z-index: 90;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: end;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  visibility: visible;
+}
+
+.menu ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.menu ul li {
+  padding-right: 3vw;
+}
+
+.menu a {
+  color: var(--purple-blue);
+}
+
 .open-menu {
   position: fixed;
   right: 5%;
@@ -230,6 +265,7 @@ section {
   padding: 7px;
   cursor: pointer;
   z-index: 98;
+  visibility: hidden;
 }
 
 .closed-menu {
@@ -241,6 +277,7 @@ section {
   padding: 7px;
   cursor: pointer;
   z-index: 98;
+  visibility: hidden;
 }
 
 #nav-content {
@@ -267,6 +304,7 @@ section {
           transform: translateX(105%);
   -webkit-transition: 0.5s ease transform;
   transition: 0.5s ease transform;
+  visibility: hidden;
 }
 
 #nav-content a {
@@ -309,8 +347,11 @@ section {
   transition: 0.3s ease-in-out;
 }
 
-canvas {
-  position: fixed;
+.canvas-1 {
+  position: absolute;
+  top: 0;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 strong {
@@ -349,10 +390,6 @@ span {
   width: auto;
   left: 17%;
   bottom: 10%;
-}
-
-.canvas-1 {
-  top: 0;
 }
 
 .upper-heading {
@@ -416,13 +453,13 @@ button {
       -ms-flex-pack: center;
           justify-content: center;
   text-align: center;
+  text-shadow: var(--main-shadow);
   white-space: nowrap;
   padding: calc(0.5em - 1px) 1em;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
   border: 1px solid var(--dark);
-  background: -webkit-gradient(linear, left top, right top, from(rgba(113, 97, 245, 0.75)), to(rgba(113, 97, 245, 0)));
-  background: linear-gradient(90deg, rgba(113, 97, 245, 0.75) 0%, rgba(113, 97, 245, 0) 100%);
+  background: linear-gradient(145deg, rgba(113, 97, 245, 0.7) 0%, rgba(245, 112, 97, 0.5) 100%);
   -webkit-box-shadow: var(--main-shadow);
           box-shadow: var(--main-shadow);
   -webkit-transition: all 0.3s ease-in-out;
@@ -433,10 +470,10 @@ button:hover {
   cursor: pointer;
   border: 1px solid var(--green);
   color: var(--green);
-  background: -webkit-gradient(linear, left top, right top, from(rgba(113, 97, 245, 0.85)), to(rgba(113, 97, 245, 0.25)));
-  background: linear-gradient(90deg, rgba(113, 97, 245, 0.85) 0%, rgba(113, 97, 245, 0.25) 100%);
+  background: linear-gradient(145deg, #7161f5 0%, rgba(245, 112, 97, 0.8) 100%);
   -webkit-box-shadow: var(--hover-shadow);
           box-shadow: var(--hover-shadow);
+  text-shadow: var(--hover-shadow);
 }
 
 .progressSection {
@@ -549,10 +586,17 @@ button:hover {
     width: 50px;
     height: 50px;
   }
+  .menu {
+    visibility: hidden;
+  }
   .open-menu,
   .closed-menu {
     width: 50px;
     height: 50px;
+    visibility: visible;
+  }
+  #nav-content {
+    visibility: visible;
   }
   #nav-content .section-heading {
     font-size: 2rem;
