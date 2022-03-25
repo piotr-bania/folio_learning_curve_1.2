@@ -70,9 +70,9 @@ camera.position.z = 6
 
 // ----------------- Lights -----------------
 
-const light = new THREE.PointLight(0xffffff, 2)
-light.position.set(-2, -1, 0)
-scene.add(light)
+// const light = new THREE.PointLight(0xffffff, 2)
+// light.position.set(-2, -1, 0)
+// scene.add(light)
 
 // ----------------- 3d models -----------------
 
@@ -80,14 +80,12 @@ let sphere = new GLTFLoader()
 sphere.load('../src/assets/models/sphere/Sphere.gltf', function (gltf) {
     sphere = gltf.scene
     // gltf.scene.scale.set(1, 1, 1)
-    gltf.scene.position.set(0, 0, 0)
-
+    gltf.scene.position.set(0, .1, 0)
     scene.add(sphere)
-
-    gsap.to(sphere.rotation, { duration: 100, delay: 1, y: -2})
+    
+    // Animation
+    gsap.to(sphere.rotation, { duration: 500, delay: 0, y: -2, repeat: -1})
 })
-
-
 
 // ----------------- HDRI -----------------
 
