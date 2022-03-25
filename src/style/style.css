@@ -137,7 +137,7 @@ section {
 }
 
 #section-a {
-  min-height: 100vh;
+  height: 100vh;
   background-image: url(/src/assets/images/backgrounds/Piotr-Bania.svg);
   background-position: center;
   background-repeat: no-repeat;
@@ -149,6 +149,7 @@ section {
 }
 
 #section-b .container {
+  height: 100vh;
   background-image: url(/src/assets/images/backgrounds/Portfolio.svg);
   background-position: left;
   background-repeat: no-repeat;
@@ -156,6 +157,7 @@ section {
 }
 
 #section-c .container {
+  height: 100vh;
   background-image: url(/src/assets/images/backgrounds/Lab.svg);
   background-position: right;
   background-repeat: no-repeat;
@@ -163,6 +165,7 @@ section {
 }
 
 #section-d .container {
+  height: 100vh;
   background-image: url(/src/assets/images/backgrounds/Skills.svg);
   background-position: left;
   background-repeat: no-repeat;
@@ -170,6 +173,7 @@ section {
 }
 
 #section-e .container {
+  height: 100vh;
   background-image: url(/src/assets/images/backgrounds/About.svg);
   background-position: right;
   background-repeat: no-repeat;
@@ -177,6 +181,7 @@ section {
 }
 
 #section-f .container {
+  height: 100vh;
   background-image: url(/src/assets/images/backgrounds/Contact.svg);
   background-position: bottom;
   background-repeat: no-repeat;

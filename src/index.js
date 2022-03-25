@@ -66,26 +66,25 @@ const sizes = {
 
 const camera = new THREE.PerspectiveCamera(30, sizes.width / sizes.height, 0.1, 1000)
 camera.position.x = -1
-camera.position.y = 0.15
+camera.position.y = 0
 camera.position.z = 6
 
 // ----------------- Lights -----------------
 
-const light = new THREE.PointLight(0xffffff, 1)
+const light = new THREE.PointLight(0xffffff, 2)
 light.position.set(-2, -1, 0)
 scene.add(light)
 
 // ----------------- 3d models -----------------
 
-let modelsDistance = 2
-
+let modelsDistance = 4
 // Model 1
 
 let model_1 = new GLTFLoader()
 model_1.load('../src/assets/models/sphere/Sphere.gltf', function (gltf) {
     model_1 = gltf.scene
-    // gltf.scene.scale.set(1, 1, 1)
-    // gltf.scene.position.set(0, 0, 0)
+    gltf.scene.scale.set(1, 1, 1)
+    gltf.scene.position.set(0, 0, 0)
     gltf.scene.position.y = - modelsDistance * 0
     scene.add(model_1)
     
@@ -98,32 +97,70 @@ model_1.load('../src/assets/models/sphere/Sphere.gltf', function (gltf) {
 let model_2 = new GLTFLoader()
 model_2.load('../src/assets/models/sphere/Sphere.gltf', function (gltf) {
     model_2 = gltf.scene
-    // gltf.scene.scale.set(1, 1, 1)
-    // gltf.scene.position.set(-2.5, -4, 0)
-    gltf.scene.position.y = - modelsDistance * 4
+    gltf.scene.scale.set(1, 1, 1)
+    gltf.scene.position.set(1, 0, -2)
+    gltf.scene.position.y = - modelsDistance * 1.16
     scene.add(model_2)
     
     // Animation
-    gsap.to(model_2.rotation, { duration: 500, delay: 0, y: -15, repeat: -1})
+    gsap.to(model_2.rotation, { duration: 500, delay: 0, x: -15, repeat: -1})
 })
 
-// Model 2
+// Model 3
 
 let model_3 = new GLTFLoader()
 model_3.load('../src/assets/models/sphere/Sphere.gltf', function (gltf) {
     model_3 = gltf.scene
-    // gltf.scene.scale.set(1, 1, 1)
-    // gltf.scene.position.set(0.5, -8, 0)
-    gltf.scene.position.y = - modelsDistance * 8
+    gltf.scene.scale.set(1, 1, 1)
+    gltf.scene.position.set(-3, 0, -2)
+    gltf.scene.position.y = - modelsDistance * 2.32
     scene.add(model_3)
     
     // Animation
-    gsap.to(model_3.rotation, { duration: 500, delay: 0, y: -15, repeat: -1})
+    gsap.to(model_3.rotation, { duration: 500, delay: 0, z: -15, repeat: -1})
 })
 
-// ----------------- Section paralax -----------------
+// Model 4
 
-const sectionModels = [model_1, model_2, model_3]
+let model_4 = new GLTFLoader()
+model_4.load('../src/assets/models/sphere/Sphere.gltf', function (gltf) {
+    model_4 = gltf.scene
+    gltf.scene.scale.set(1, 1, 1)
+    gltf.scene.position.set(1, 0, -2)
+    gltf.scene.position.y = - modelsDistance * 3.48
+    scene.add(model_4)
+    
+    // Animation
+    gsap.to(model_4.rotation, { duration: 500, delay: 0, y: -15, repeat: -1})
+})
+
+// Model 5
+
+let model_5 = new GLTFLoader()
+model_5.load('../src/assets/models/sphere/Sphere.gltf', function (gltf) {
+    model_5 = gltf.scene
+    gltf.scene.scale.set(1, 1, 1)
+    gltf.scene.position.set(-3, 0, -2)
+    gltf.scene.position.y = - modelsDistance * 4.64
+    scene.add(model_5)
+    
+    // Animation
+    gsap.to(model_5.rotation, { duration: 500, delay: 0, x: -15, repeat: -1})
+})
+
+// Model 6
+
+let model_6 = new GLTFLoader()
+model_6.load('../src/assets/models/sphere/Sphere.gltf', function (gltf) {
+    model_6 = gltf.scene
+    gltf.scene.scale.set(1, 1, 1)
+    gltf.scene.position.set(1, 0, -2)
+    gltf.scene.position.y = - modelsDistance * 6
+    scene.add(model_6)
+    
+    // Animation
+    gsap.to(model_6.rotation, { duration: 500, delay: 0, z: -15, repeat: -1})
+})
 
 // ----------------- HDRI -----------------
 
@@ -143,25 +180,20 @@ const renderer = new THREE.WebGLRenderer({
 })
 
 renderer.toneMapping = THREE.ACESFilmicToneMapping
-renderer.toneMappingExposure = 0.2
+renderer.toneMappingExposure = 0.3
 renderer.outputEncoding = THREE.sRGBEncoding
 
 renderer.setSize(sizes.width, sizes.height)
 document.body.appendChild(renderer.domElement)
 
-// // Render 2
-// const renderer_2 = new THREE.WebGLRenderer({
-//     canvas: canvas_2,
-//     antialias: true,
-//     alpha: true
-// })
+// ----------------- Section paralax -----------------
 
-// renderer_2.toneMapping = THREE.ACESFilmicToneMapping
-// renderer_2.toneMappingExposure = 0.15
-// renderer_2.outputEncoding = THREE.sRGBEncoding
+let scrollY = window.scrollY
 
-// renderer_2.setSize(sizes.width, sizes.height)
-// document.body.appendChild(renderer_2.domElement)
+window.addEventListener('scroll', () => {
+    scrollY = window.scrollY
+    console.log(scrollY)
+})
 
 // ----------------- Orbit controls -----------------
 
@@ -184,7 +216,18 @@ const clock = new THREE.Clock()
 
 const tick = () => {
     const elapsedTime = clock.getElapsedTime()
+
+    // Animate camera
+    camera.position.y = - scrollY / sizes.height * modelsDistance
+
+        // Render
+        renderer.render(scene, camera)
+
+        // Call tick again on the next frame
+        window.requestAnimationFrame(tick)
 }
+
+tick()
 
 // ----------------- Animation -----------------
 
