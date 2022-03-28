@@ -13,6 +13,8 @@ import {
     GLTFLoader
 } from '../src/modules/GLTFLoader.js'
 
+
+
 // ----------------- Canvas -----------------
 
 const canvas_1 = document.querySelector('canvas.canvas-1')
@@ -114,7 +116,7 @@ let modelsDistance = 4
 
 // Model 1
 let model_1 = new GLTFLoader()
-model_1.load('../src/assets/models/sphere/Sphere.gltf', function (gltf) {
+model_1.load('../src/assets/models/sphere/sphere.gltf', function (gltf) {
     model_1 = gltf.scene
     gltf.scene.scale.set(1, 1, 1)
     gltf.scene.position.set(0, 0, 0)
@@ -132,7 +134,7 @@ model_1.load('../src/assets/models/sphere/Sphere.gltf', function (gltf) {
 
 // Model 2
 let model_2 = new GLTFLoader()
-model_2.load('../src/assets/models/sphere/Sphere.gltf', function (gltf) {
+model_2.load('../src/assets/models/sphere/sphere.gltf', function (gltf) {
     model_2 = gltf.scene
     gltf.scene.scale.set(1, 1, 1)
     gltf.scene.position.set(1, 0, -2)
@@ -150,7 +152,7 @@ model_2.load('../src/assets/models/sphere/Sphere.gltf', function (gltf) {
 
 // Model 3
 let model_3 = new GLTFLoader()
-model_3.load('../src/assets/models/sphere/Sphere.gltf', function (gltf) {
+model_3.load('../src/assets/models/sphere/sphere.gltf', function (gltf) {
     model_3 = gltf.scene
     gltf.scene.scale.set(1, 1, 1)
     gltf.scene.position.set(-3, 0, -2)
@@ -168,7 +170,7 @@ model_3.load('../src/assets/models/sphere/Sphere.gltf', function (gltf) {
 
 // Model 4
 let model_4 = new GLTFLoader()
-model_4.load('../src/assets/models/sphere/Sphere.gltf', function (gltf) {
+model_4.load('../src/assets/models/sphere/sphere.gltf', function (gltf) {
     model_4 = gltf.scene
     gltf.scene.scale.set(1, 1, 1)
     gltf.scene.position.set(1, 0, -2)
@@ -186,7 +188,7 @@ model_4.load('../src/assets/models/sphere/Sphere.gltf', function (gltf) {
 
 // Model 5
 let model_5 = new GLTFLoader()
-model_5.load('../src/assets/models/sphere/Sphere.gltf', function (gltf) {
+model_5.load('../src/assets/models/sphere/sphere.gltf', function (gltf) {
     model_5 = gltf.scene
     gltf.scene.scale.set(1, 1, 1)
     gltf.scene.position.set(-3, 0, -2)
@@ -204,7 +206,7 @@ model_5.load('../src/assets/models/sphere/Sphere.gltf', function (gltf) {
 
 // Model 6
 let model_6 = new GLTFLoader()
-model_6.load('../src/assets/models/sphere/Sphere.gltf', function (gltf) {
+model_6.load('../src/assets/models/sphere/sphere.gltf', function (gltf) {
     model_6 = gltf.scene
     gltf.scene.scale.set(1, 1, 1)
     gltf.scene.position.set(1, 0, -2)
@@ -219,6 +221,39 @@ model_6.load('../src/assets/models/sphere/Sphere.gltf', function (gltf) {
         repeat: -1
     })
 })
+
+
+
+
+
+
+
+// Animated cube
+let animatedCube = new GLTFLoader()
+animatedCube.load('../src/assets/models/animatedCube/animatedCube.gltf', function (gltf) {
+    animatedCube = gltf.scene
+    gltf.scene.scale.set(0.5, 0.5, 0.5)
+    gltf.scene.position.set(-2, 0, 0)
+    gltf.scene.position.y = -modelsDistance * 0
+    scene.add(animatedCube)
+
+    
+
+    scene.add(gltf.scene);
+
+
+    // Animation
+    // gsap.to(animatedCube.rotation, {
+    //     duration: 500,
+    //     delay: 0,
+    //     y: -15,
+    //     repeat: -1
+    // })
+})
+
+
+
+
 
 // ----------------- Render -----------------
 
