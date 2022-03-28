@@ -226,7 +226,7 @@ model_6.load('../src/assets/models/sphere/sphere.gltf', function (gltf) {
 
 
 
-
+let mixer
 
 // Animated cube
 let animatedCube = new GLTFLoader()
@@ -235,11 +235,22 @@ animatedCube.load('../src/assets/models/animatedCube/animatedCube.gltf', functio
     gltf.scene.scale.set(0.5, 0.5, 0.5)
     gltf.scene.position.set(-2, 0, 0)
     gltf.scene.position.y = -modelsDistance * 0
-    scene.add(animatedCube)
-
-    
-
     scene.add(gltf.scene);
+
+    mixer = new THREE.AnimationMixer(animatedCube)
+    const clips = gltf.animations
+    const clip = THREE.AnimationClip.findByName(clips, 'CubeAction')
+    const action = mixer.clipAction(clip)
+    action.play()
+
+
+    const animationClock = new THREE.Clock()
+
+    function animate() {
+        mixer.update(animationClock.getDelta())
+        renderer.render(scene, camera)
+    }
+    renderer.setAnimationLoop(animate)
 
 
     // Animation
@@ -347,7 +358,6 @@ function animate() {
     requestAnimationFrame(animate)
     // controls.update()
     renderer.render(scene, camera)
-    // renderer_2.render(scene, camera)
 }
 animate()
 
