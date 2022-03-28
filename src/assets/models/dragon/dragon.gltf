@@ -1,0 +1,109 @@
+{
+    "asset" : {
+        "generator" : "Khronos glTF Blender I/O v1.8.19",
+        "version" : "2.0"
+    },
+    "scene" : 0,
+    "scenes" : [
+        {
+            "extras" : {
+                "uuid" : "38c7533c-1957-46e4-986a-31a40e1a0034",
+                "assets reported" : {}
+            },
+            "name" : "Scene",
+            "nodes" : [
+                0
+            ]
+        }
+    ],
+    "nodes" : [
+        {
+            "mesh" : 0,
+            "name" : "Plane"
+        }
+    ],
+    "materials" : [
+        {
+            "doubleSided" : true,
+            "name" : "Spheres",
+            "pbrMetallicRoughness" : {
+                "baseColorFactor" : [
+                    0.4852076768875122,
+                    0.19249430298805237,
+                    0.06437201797962189,
+                    1
+                ],
+                "metallicFactor" : 0.9409090876579285,
+                "roughnessFactor" : 0.3954545557498932
+            }
+        }
+    ],
+    "meshes" : [
+        {
+            "name" : "Plane",
+            "primitives" : [
+                {
+                    "attributes" : {
+                        "POSITION" : 0,
+                        "NORMAL" : 1
+                    },
+                    "indices" : 2,
+                    "material" : 0
+                }
+            ]
+        }
+    ],
+    "accessors" : [
+        {
+            "bufferView" : 0,
+            "componentType" : 5126,
+            "count" : 93265,
+            "max" : [
+                4.067090034484863,
+                5.641536235809326,
+                5.151881694793701
+            ],
+            "min" : [
+                -4.5526123046875,
+                -4.606122970581055,
+                -5.306098461151123
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 1,
+            "componentType" : 5126,
+            "count" : 93265,
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 2,
+            "componentType" : 5125,
+            "count" : 482730,
+            "type" : "SCALAR"
+        }
+    ],
+    "bufferViews" : [
+        {
+            "buffer" : 0,
+            "byteLength" : 1119180,
+            "byteOffset" : 0
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 1119180,
+            "byteOffset" : 1119180
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 1930920,
+            "byteOffset" : 2238360
+        }
+    ],
+    "buffers" : [
+        {
+            "byteLength" : 4169280,
+            "uri" : "dragon.bin"
+        }
+    ]
+}

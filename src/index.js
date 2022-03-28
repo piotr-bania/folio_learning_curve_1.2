@@ -239,19 +239,16 @@ animatedCube.load('../src/assets/models/animatedCube/animatedCube.gltf', functio
 
     mixer = new THREE.AnimationMixer(animatedCube)
     const clips = gltf.animations
-    const clip = THREE.AnimationClip.findByName(clips, 'CubeAction')
-    const action = mixer.clipAction(clip)
-    action.play()
-
+    clips.forEach(function (clip) {
+        mixer.clipAction(clip).play();
+    })
 
     const animationClock = new THREE.Clock()
-
     function animate() {
         mixer.update(animationClock.getDelta())
         renderer.render(scene, camera)
     }
     renderer.setAnimationLoop(animate)
-
 
     // Animation
     // gsap.to(animatedCube.rotation, {
