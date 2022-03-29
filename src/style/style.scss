@@ -315,8 +315,7 @@ section {
     a {
         display: inline-block;
         width: 100%;
-        color: var(--light);
-        font-size: 2.5rem;
+        color: var(--purple);
         transition: all 0.3s ease-in-out;
     }
 
@@ -342,8 +341,9 @@ section {
 
 #nav-content .section-heading {
     text-align: left;
-    font-size: 3rem;
-    font-family: var(--header-font-bold);
+    font-size: 1.65rem;
+    font-family: var(--header-font);
+    color: var(--lighter);
     padding-bottom: 20px;
 }
 
@@ -636,10 +636,6 @@ button {
 
     #nav-content {
         visibility: visible;
-    }
-
-    #nav-content .section-heading {
-        font-size: 2rem;
     }
 
     #nav-content a {
