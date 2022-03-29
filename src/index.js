@@ -4,6 +4,7 @@ import {
     OrbitControls
 } from '../src/modules/OrbitControls.js'
 import {
+    color,
     GUI
 } from '../node_modules/dat.gui/build/dat.gui.module.js'
 import {
@@ -31,31 +32,31 @@ const particleTexture = textureLoader.load('../src/assets/particles/twirl_03.png
 
 // ----------------- Particles -----------------
 
-// // Geometry
-// const particlesGeometry = new THREE.BufferGeometry()
-// const count = 10000
+// Geometry
+const particlesGeometry = new THREE.BufferGeometry()
+const count = 10000
 
-// const positions = new Float32Array(count * 3)
-// for (let i = 0; i < count * 3; i++) {
-//     positions[i] = (Math.random() - 0.5) * 10
-// }
+const positions = new Float32Array(count * 3)
+for (let i = 0; i < count * 3; i++) {
+    positions[i] = (Math.random() - 0.5) * 10
+}
 
-// particlesGeometry.setAttribute(
-//     'position',
-//     new THREE.BufferAttribute(positions, 3)
-// )
+particlesGeometry.setAttribute(
+    'position',
+    new THREE.BufferAttribute(positions, 3)
+)
 
-// // Material
-// const particlesMaterial = new THREE.PointsMaterial()
-// particlesMaterial.size = 0.025
-// particlesMaterial.sizeAttenuation = true
-// particlesMaterial.color = new THREE.Color('#ABABAB')
-// particlesMaterial.transparent = true
-// particlesMaterial.alphaMap = particleTexture
+// Material
+const particlesMaterial = new THREE.PointsMaterial()
+particlesMaterial.size = 0.05
+particlesMaterial.sizeAttenuation = true
+particlesMaterial.color = new THREE.Color('#7161F5')
+particlesMaterial.transparent = true
+particlesMaterial.alphaMap = particleTexture
 
-// // Points
-// const particles = new THREE.Points(particlesGeometry, particlesMaterial)
-// scene.add(particles)
+// Points
+const particles = new THREE.Points(particlesGeometry, particlesMaterial)
+scene.add(particles)
 
 // ----------------- Sizes -----------------
 
@@ -145,7 +146,7 @@ model_2.load('../src/assets/models/sphere/sphere.gltf', function (gltf) {
     gsap.to(model_2.rotation, {
         duration: 500,
         delay: 0,
-        x: -15,
+        x: -5,
         repeat: -1
     })
 })
@@ -226,38 +227,39 @@ model_6.load('../src/assets/models/sphere/sphere.gltf', function (gltf) {
 
 
 
-let mixer
+// let mixer
 
-// Animated cube
-let animatedCube = new GLTFLoader()
-animatedCube.load('../src/assets/models/animatedCube/animatedCube.gltf', function (gltf) {
-    animatedCube = gltf.scene
-    gltf.scene.scale.set(0.5, 0.5, 0.5)
-    gltf.scene.position.set(-2, 0, 0)
-    gltf.scene.position.y = -modelsDistance * 0
-    scene.add(gltf.scene);
+// // Animated cube
+// let model1 = new GLTFLoader()
+// model1.load('../src/assets/models/dragon/dragon.gltf', function (gltf) {
+//     model1 = gltf.scene
+//     gltf.scene.scale.set(0.5, 0.5, 0.5)
+//     gltf.scene.position.set(-2, 0, 0)
+//     gltf.scene.position.y = -modelsDistance * 0
+//     scene.add(gltf.scene);
 
-    mixer = new THREE.AnimationMixer(animatedCube)
-    const clips = gltf.animations
-    clips.forEach(function (clip) {
-        mixer.clipAction(clip).play();
-    })
+//     mixer = new THREE.AnimationMixer(model1)
+//     const clips = gltf.animations
+//     clips.forEach(function (clip) {
+//         mixer.clipAction(clip).play();
+//     })
 
-    const animationClock = new THREE.Clock()
-    function animate() {
-        mixer.update(animationClock.getDelta())
-        renderer.render(scene, camera)
-    }
-    renderer.setAnimationLoop(animate)
+//     const animationClock = new THREE.Clock()
 
-    // Animation
-    // gsap.to(animatedCube.rotation, {
-    //     duration: 500,
-    //     delay: 0,
-    //     y: -15,
-    //     repeat: -1
-    // })
-})
+//     function animate() {
+//         mixer.update(animationClock.getDelta())
+//         renderer.render(scene, camera)
+//     }
+//     renderer.setAnimationLoop(animate)
+
+//     // Animation
+//     gsap.to(model1.rotation, {
+//         duration: 500,
+//         delay: 0,
+//         y: -15,
+//         repeat: -1
+//     })
+// })
 
 
 
@@ -304,7 +306,7 @@ window.addEventListener('scroll', () => {
 
 // ----------------- GUI -----------------/
 
-const gui = new GUI()
+// const gui = new GUI()
 
 // gui.add(directionalLight, 'intensity').min(0).max(1).step(0.001).name('directionalLight intensity')
 // gui.addColor(directionalLight, 'color').name('directionalLight color')

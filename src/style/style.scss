@@ -99,8 +99,7 @@ body {
 
 h1 {
     font-family: var(--header-font);
-    font-size: clamp(1.215rem, 7vmin,
-            2.488rem);
+    font-size: clamp(1.215rem, 7vmin, 2.488rem);
     line-height: 1.4;
     color: var(--lighter);
 }
@@ -267,9 +266,9 @@ section {
     }
 
     a {
-        color: var(--purple-blue);
+        color: var(--blue-turqupise);
     }
-    
+
 }
 
 .open-menu {
@@ -482,7 +481,7 @@ button {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
     border: 1px solid var(--dark);
-    background: linear-gradient(90deg, rgba(113, 97, 245, 0.7) 0%, rgba(113, 97, 245, 0) 100%);
+    background: linear-gradient(90deg, rgba(113, 97, 245, 0.9) 0%, rgba(113, 97, 245, ) 100%);
     box-shadow: var(--main-shadow);
     transition: all 0.3s ease-in-out;
 }
@@ -490,7 +489,7 @@ button {
 button:hover {
     cursor: pointer;
     border: 1px solid var(--lighter);
-    background: linear-gradient(90deg, rgba(97, 245, 112, 0.9) 0%, rgba(97, 245, 112, 0.5) 100%);
+    background: linear-gradient(90deg, rgba(97, 245, 112, 1) 0%, rgba(97, 245, 112, 0.5) 100%);
     box-shadow: var(--hover-shadow);
     text-shadow: var(--hover-shadow);
 }

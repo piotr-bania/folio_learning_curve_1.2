@@ -464,8 +464,8 @@ button {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
   border: 1px solid var(--dark);
-  background: -webkit-gradient(linear, left top, right top, from(rgba(113, 97, 245, 0.7)), to(rgba(113, 97, 245, 0)));
-  background: linear-gradient(90deg, rgba(113, 97, 245, 0.7) 0%, rgba(113, 97, 245, 0) 100%);
+  background: -webkit-gradient(linear, left top, right top, from(rgba(113, 97, 245, 0.9)), to(#7161f5));
+  background: linear-gradient(90deg, rgba(113, 97, 245, 0.9) 0%, #7161f5 100%);
   -webkit-box-shadow: var(--main-shadow);
           box-shadow: var(--main-shadow);
   -webkit-transition: all 0.3s ease-in-out;
@@ -475,8 +475,8 @@ button {
 button:hover {
   cursor: pointer;
   border: 1px solid var(--lighter);
-  background: -webkit-gradient(linear, left top, right top, from(rgba(97, 245, 112, 0.9)), to(rgba(97, 245, 112, 0.5)));
-  background: linear-gradient(90deg, rgba(97, 245, 112, 0.9) 0%, rgba(97, 245, 112, 0.5) 100%);
+  background: -webkit-gradient(linear, left top, right top, from(#61f570), to(rgba(97, 245, 112, 0.5)));
+  background: linear-gradient(90deg, #61f570 0%, rgba(97, 245, 112, 0.5) 100%);
   -webkit-box-shadow: var(--hover-shadow);
           box-shadow: var(--hover-shadow);
   text-shadow: var(--hover-shadow);
