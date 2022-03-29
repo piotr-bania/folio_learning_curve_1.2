@@ -266,7 +266,7 @@ section {
     }
 
     a {
-        color: var(--blue-turqupise);
+        color: var(--purple);
     }
 
 }
@@ -481,17 +481,33 @@ button {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
     border: 1px solid var(--dark);
-    background: linear-gradient(90deg, rgba(113, 97, 245, 0.9) 0%, rgba(113, 97, 245, ) 100%);
-    box-shadow: var(--main-shadow);
+    background: linear-gradient(-45deg, #7161F5 0%, #190AA1 100%);
+    background-size: 400% 400%;
+    animation: animate 5s ease-in-out infinite;
     transition: all 0.3s ease-in-out;
+    box-shadow: var(--main-shadow);
+
+    &:hover {
+        cursor: pointer;
+        border: 1px solid #0AA119;
+        background: linear-gradient(-45deg, #61F570 0%, #0AA119 100%);
+        box-shadow: var(--hover-shadow);
+        text-shadow: var(--hover-shadow);
+    }
 }
 
-button:hover {
-    cursor: pointer;
-    border: 1px solid var(--lighter);
-    background: linear-gradient(90deg, rgba(97, 245, 112, 1) 0%, rgba(97, 245, 112, 0.5) 100%);
-    box-shadow: var(--hover-shadow);
-    text-shadow: var(--hover-shadow);
+@keyframes animate {
+    0% {
+        background-position: 0 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0 50%;
+    }
 }
 
 // ------------------------------ Progress bar ------------------------------
