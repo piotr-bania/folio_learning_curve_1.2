@@ -25,7 +25,7 @@
     // Colors
     --purple: #7161F5;
     --purple-blue: #6286F5;
-    --blue-turqupise: #62B8F5;
+    --blue-turquoise: #62B8F5;
     --turquoise: #62EAF5;
     --green: #61F570;
     --yellow: #E6F561;
@@ -108,14 +108,14 @@ h2 {
     font-family: var(--header-font);
     font-size: clamp(1.138rem, 5.6vmin, 1.728rem);
     line-height: 1.4;
-    color: var(--purple);
+    color: var(--grey-text);
 }
 
 h3 {
     font-family: var(--header-font);
     font-size: clamp(1.067rem, 4.5vmin, 1.2rem);
     line-height: 1.4;
-    color: var(--blue-turqupise);
+    color: var(--purple);
 }
 
 p {
@@ -156,7 +156,6 @@ section {
 
 #section-b {
     .container {
-        height: 100vh;
         background-image: url(/src/assets/images/backgrounds/Portfolio.svg);
         background-position: left;
         background-repeat: no-repeat;
@@ -166,7 +165,6 @@ section {
 
 #section-c {
     .container {
-        height: 100vh;
         background-image: url(/src/assets/images/backgrounds/Lab.svg);
         background-position: right;
         background-repeat: no-repeat;
@@ -176,7 +174,6 @@ section {
 
 #section-d {
     .container {
-        height: 100vh;
         background-image: url(/src/assets/images/backgrounds/Skills.svg);
         background-position: left;
         background-repeat: no-repeat;
@@ -186,7 +183,6 @@ section {
 
 #section-e {
     .container {
-        height: 100vh;
         background-image: url(/src/assets/images/backgrounds/About.svg);
         background-position: right;
         background-repeat: no-repeat;
@@ -196,7 +192,6 @@ section {
 
 #section-f {
     .container {
-        height: 100vh;
         background-image: url(/src/assets/images/backgrounds/Contact.svg);
         background-position: bottom;
         background-repeat: no-repeat;
@@ -462,6 +457,48 @@ img {
 
     .project-image img {
         border: 1px solid var(--green);
+    }
+}
+
+// ------------------------------ About ------------------------------
+
+#section-e {
+    .vl {
+        border-left: 2px solid var(--purple);
+        height: 300px;
+        position: absolute;
+    }
+
+    p {
+        position: relative;
+        left: 20px;
+        max-width: 80%;
+        display: inline;
+
+    }
+
+    .purple {
+        color: var(--purple);
+    }
+
+    .purple-blue {
+        color: var(--purple-blue);
+    }
+
+    .blue-turquoise {
+        color: var(--blue-turquoise);
+    }
+
+    .red {
+        color: var(--red);
+    }
+
+    .green {
+        color: var(--green);
+    }
+
+    .grey {
+        color: var(--grey-text);
     }
 }
 
