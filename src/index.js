@@ -19,7 +19,6 @@ import {
 // ----------------- Canvas -----------------
 
 const canvas_1 = document.querySelector('canvas.canvas-1')
-// const canvas_2 = document.querySelector('canvas.canvas-2')
 
 // ----------------- Scene -----------------
 
@@ -74,22 +73,36 @@ camera.position.z = 6
 
 // ----------------- Lights -----------------
 
-const pointLight = new THREE.PointLight(0x7161F5)
-pointLight.position.set(-1.64, 0.65, 0.89)
-pointLight.intensity = 3.413
-scene.add(pointLight)
+const hemiLight = new THREE.HemisphereLight(0xffeeb1, 0x080820, 4)
+scene.add(hemiLight)
 
-const pointLight2 = new THREE.PointLight()
-pointLight2.position.set(1.32, -0.5, 0)
-pointLight2.color = new THREE.Color(0x61F570)
-pointLight2.intensity = 3.192
-scene.add(pointLight2)
+const spotLight = new THREE.SpotLight(0xffffff, 4)
+spotLight.position.set(-50, 50, 50)
+spotLight.castShadow = true
+spotLight.shadow.bias = -0.0001
+spotLight.shadow.mapSize.width = 1024*4
+spotLight.shadow.mapSize.height = 1024*4
+scene.add(spotLight)
 
-const pointLight3 = new THREE.PointLight()
-pointLight3.position.set(1.26, -0.88, 0.79)
-pointLight3.color = new THREE.Color(0xF57061)
-pointLight3.intensity = 3.871
-scene.add(pointLight3)
+// const pointLight = new THREE.PointLight(0x7161F5)
+// pointLight.position.set(-1.64, 0.65, 0.89)
+// pointLight.intensity = 3.413
+// pointLight.castShadow = true
+// scene.add(pointLight)
+
+// const pointLight2 = new THREE.PointLight()
+// pointLight2.position.set(1.32, -0.5, 0)
+// pointLight2.color = new THREE.Color(0x61F570)
+// pointLight2.intensity = 3.192
+// pointLight2.castShadow = true
+// scene.add(pointLight2)
+
+// const pointLight3 = new THREE.PointLight()
+// pointLight3.position.set(1.26, -0.88, 0.79)
+// pointLight3.color = new THREE.Color(0xF57061)
+// pointLight3.intensity = 3.871
+// pointLight3.castShadow = true
+// scene.add(pointLight3)
 
 // const directionalLight = new THREE.DirectionalLight()
 // directionalLight.position.set(-2, -1, 0)
@@ -105,11 +118,11 @@ scene.add(pointLight3)
 
 // ----------------- HDRI -----------------
 
-new RGBELoader()
-    .load("../src/assets/images/HDRI/abandoned_workshop_1k.hdr", function (texture) {
-        texture.mapping = THREE.EquirectangularReflectionMapping
-        scene.environment = texture
-    })
+// new RGBELoader()
+//     .load("../src/assets/images/HDRI/abandoned_workshop_1k.hdr", function (texture) {
+//         texture.mapping = THREE.EquirectangularReflectionMapping
+//         scene.environment = texture
+//     })
 
 // ----------------- 3d models -----------------
 
@@ -122,6 +135,15 @@ model_1.load('../src/assets/models/sphere/sphere.gltf', function (gltf) {
     gltf.scene.scale.set(1, 1, 1)
     gltf.scene.position.set(0, 0, 0)
     gltf.scene.position.y = -modelsDistance * 0
+
+    model_1.traverse(n => {
+        if (n.isMesh) {
+            n.castShadow = true
+            n.receiveShadow = true
+            if (n.material.map) n.material.map.anisotropy = 16
+        }
+    })
+
     scene.add(model_1)
 
     // Animation
@@ -314,24 +336,6 @@ window.addEventListener('scroll', () => {
 // gui.add(directionalLight.position, 'y').min(- 3).max(3).step(0.01).name('directionalLight Y')
 // gui.add(directionalLight.position, 'z').min(- 3).max(3).step(0.01).name('directionalLight Z')
 
-// gui.add(pointLight, 'intensity').min(0).max(5).step(0.001).name('pointLight intensity')
-// // gui.addColor(pointLight, 'color').name('pointLight color')
-// gui.add(pointLight.position, 'x').min(- 3).max(3).step(0.01).name('pointLight X')
-// gui.add(pointLight.position, 'y').min(- 3).max(3).step(0.01).name('pointLight Y')
-// gui.add(pointLight.position, 'z').min(- 3).max(3).step(0.01).name('pointLight Z')
-
-// gui.add(pointLight2, 'intensity').min(0).max(5).step(0.001).name('pointLight2 intensity')
-// // gui.addColor(pointLight2, 'color').name('pointLight2 color')
-// gui.add(pointLight2.position, 'x').min(- 3).max(3).step(0.01).name('pointLight2 X')
-// gui.add(pointLight2.position, 'y').min(- 3).max(3).step(0.01).name('pointLight2 Y')
-// gui.add(pointLight2.position, 'z').min(- 3).max(3).step(0.01).name('pointLight2 Z')
-
-// gui.add(pointLight3, 'intensity').min(0).max(5).step(0.001).name('pointLight3 intensity')
-// // gui.addColor(pointLight3, 'color').name('pointLight3 color')
-// gui.add(pointLight3.position, 'x').min(- 3).max(3).step(0.01).name('pointLight3 X')
-// gui.add(pointLight3.position, 'y').min(- 3).max(3).step(0.01).name('pointLight3 Y')
-// gui.add(pointLight3.position, 'z').min(- 3).max(3).step(0.01).name('pointLight3 Z')
-
 // ----------------- Clock -----------------/
 
 const clock = new THREE.Clock()
@@ -355,6 +359,13 @@ tick()
 
 function animate() {
     requestAnimationFrame(animate)
+
+    spotLight.position.set(
+        camera.position.x + 10,
+        camera.position.y + 10,
+        camera.position.z + 10
+    )
+
     // controls.update()
     renderer.render(scene, camera)
 }
@@ -373,6 +384,8 @@ function onWindowResize() {
 
     // Update renderer
     renderer.setSize(sizes.width, sizes.height)
-    // renderer_2.setSize(sizes.width, sizes.height)
+
+    // Casting shadows
+    renderer.shadowMap.enabled = true
 }
 window.addEventListener('resize', onWindowResize, false);
