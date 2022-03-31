@@ -14,8 +14,6 @@ import {
     GLTFLoader
 } from '../src/modules/GLTFLoader.js'
 
-
-
 // ----------------- Canvas -----------------
 
 const canvas_1 = document.querySelector('canvas.canvas-1')
@@ -80,49 +78,17 @@ const spotLight = new THREE.SpotLight(0xffffff, 4)
 spotLight.position.set(-50, 50, 50)
 spotLight.castShadow = true
 spotLight.shadow.bias = -0.0001
-spotLight.shadow.mapSize.width = 1024*4
-spotLight.shadow.mapSize.height = 1024*4
+spotLight.shadow.mapSize.width = 1024 * 4
+spotLight.shadow.mapSize.height = 1024 * 4
 scene.add(spotLight)
-
-// const pointLight = new THREE.PointLight(0x7161F5)
-// pointLight.position.set(-1.64, 0.65, 0.89)
-// pointLight.intensity = 3.413
-// pointLight.castShadow = true
-// scene.add(pointLight)
-
-// const pointLight2 = new THREE.PointLight()
-// pointLight2.position.set(1.32, -0.5, 0)
-// pointLight2.color = new THREE.Color(0x61F570)
-// pointLight2.intensity = 3.192
-// pointLight2.castShadow = true
-// scene.add(pointLight2)
-
-// const pointLight3 = new THREE.PointLight()
-// pointLight3.position.set(1.26, -0.88, 0.79)
-// pointLight3.color = new THREE.Color(0xF57061)
-// pointLight3.intensity = 3.871
-// pointLight3.castShadow = true
-// scene.add(pointLight3)
-
-// const directionalLight = new THREE.DirectionalLight()
-// directionalLight.position.set(-2, -1, 0)
-// directionalLight.color = new THREE.Color(0xffffff)
-// directionalLight.intensity = 1
-// scene.add(directionalLight)
-
-// const ambientLight = new THREE.AmbientLight()
-// ambientLight.position.set(-2, -1, 0)
-// ambientLight.color = new THREE.Color(0xffffff)
-// ambientLight.intensity = 1
-// scene.add(ambientLight)
 
 // ----------------- HDRI -----------------
 
-// new RGBELoader()
-//     .load("../src/assets/images/HDRI/abandoned_workshop_1k.hdr", function (texture) {
-//         texture.mapping = THREE.EquirectangularReflectionMapping
-//         scene.environment = texture
-//     })
+new RGBELoader()
+    .load("../src/assets/images/HDRI/abandoned_workshop_1k.hdr", function (texture) {
+        texture.mapping = THREE.EquirectangularReflectionMapping
+        scene.environment = texture
+    })
 
 // ----------------- 3d models -----------------
 
@@ -249,39 +215,61 @@ model_6.load('../src/assets/models/sphere/sphere.gltf', function (gltf) {
 
 
 
-// let mixer
+let mixer
 
-// // Animated cube
-// let model1 = new GLTFLoader()
-// model1.load('../src/assets/models/dragon/dragon.gltf', function (gltf) {
-//     model1 = gltf.scene
-//     gltf.scene.scale.set(0.5, 0.5, 0.5)
-//     gltf.scene.position.set(-2, 0, 0)
-//     gltf.scene.position.y = -modelsDistance * 0
-//     scene.add(gltf.scene);
+// Animated cube
+let model1 = new GLTFLoader()
+model1.load('../src/assets/models/animatedCube/animatedCube.gltf', function (gltf) {
+    // Model
+    model1 = gltf.scene
+    gltf.scene.scale.set(0.5, 0.5, 0.5)
+    gltf.scene.position.set(-2, 0, 0)
+    gltf.scene.position.y = -modelsDistance * 0
+    
+    // Texture
+    const textureLoader = new THREE.TextureLoader()
+    const normalMapTexture = textureLoader.load("../src/assets/images/textures/GravelBig01_2K_Normal.png")
+    normalMapTexture.wrapS = THREE.RepeatWrapping
+    normalMapTexture.wrapT = THREE.RepeatWrapping
 
-//     mixer = new THREE.AnimationMixer(model1)
-//     const clips = gltf.animations
-//     clips.forEach(function (clip) {
-//         mixer.clipAction(clip).play();
-//     })
+    // Material
+    const newMaterial = new THREE.MeshPhysicalMaterial({
+        color: 0x7161F5,
+        metalness: 0.5,
+        roughness: 0.5,
+        transmission: 0.5,
+        thickness: 0.5,
+        normalMap: normalMapTexture,
+        clearcoatNormalMap: normalMapTexture
+    })
+    model1.traverse((o) => {
+        if (o.isMesh) o.material = newMaterial
+    })
 
-//     const animationClock = new THREE.Clock()
+    scene.add(gltf.scene)
 
-//     function animate() {
-//         mixer.update(animationClock.getDelta())
-//         renderer.render(scene, camera)
-//     }
-//     renderer.setAnimationLoop(animate)
+    // Animation
+    mixer = new THREE.AnimationMixer(model1)
+    const clips = gltf.animations
+    clips.forEach(function (clip) {
+        mixer.clipAction(clip).play()
+    })
+    const animationClock = new THREE.Clock()
+    function animate() {
+        mixer.update(animationClock.getDelta())
+        renderer.render(scene, camera)
+    }
 
-//     // Animation
-//     gsap.to(model1.rotation, {
-//         duration: 500,
-//         delay: 0,
-//         y: -15,
-//         repeat: -1
-//     })
-// })
+    renderer.setAnimationLoop(animate)
+
+    // Rotation
+    gsap.to(model1.rotation, {
+        duration: 500,
+        delay: 0,
+        y: -15,
+        repeat: -1
+    })
+})
 
 
 
