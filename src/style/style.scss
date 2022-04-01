@@ -28,7 +28,7 @@
     --red: #F57061;
     --darker: #040117;
     --dark: #07032E;
-    --light: #F5F4FE;
+    --light: #EBE8FE;
     --lighter: #FFFFFF;
     --background-text: rgba(113, 97, 245, 0.05);
     --grey-text: #ABABAB;
@@ -87,14 +87,14 @@ body {
     font-family: var(--body-font);
     font-size: var(--text-font-size);
     line-height: 1.6;
-    color: var(--grey-text);
+    color: var(--light);
     user-select: none;
 }
 
 // ------------------------------ Fonts ------------------------------
 
 h1 {
-    font-family: var(--header-font);
+    font-family: var(--header-alternative);
     font-size: 2.074rem;
     line-height: 1.2;
     color: var(--light);
@@ -102,7 +102,7 @@ h1 {
 }
 
 h2 {
-    font-family: var(--header-font);
+    font-family: var(--header-alternative);
     font-size: 1.728rem;
     line-height: 1.2;
     color: var(--grey-text);
@@ -110,7 +110,7 @@ h2 {
 }
 
 h3 {
-    font-family: var(--header-font);
+    font-family: var(--header-alternative);
     font-size: 1.44rem;
     line-height: 1.2;
     color: var(--red);
@@ -232,7 +232,7 @@ section {
 
 #section-c,
 #section-e {
-    background-image: linear-gradient(to right, var(--lighter), var(--light));
+    background-image: linear-gradient(to left, var(--lighter), var(--light));
 
     h1,
     p {
@@ -383,7 +383,7 @@ strong {
 }
 
 b {
-    font-family: var(--header-font-bold);
+    font-family: var(--header-alternative-bold);
     color: var(--green);
 }
 
@@ -478,7 +478,38 @@ span {
     }
 }
 
-// ------------------------------ About ------------------------------
+// ------------------------------ Lab section ------------------------------
+
+#section-c {
+    .container {
+        grid-template-columns: repeat(12, 1fr);
+        grid-template-rows: repeat(6);
+
+        .lab {
+            grid-area: 1 / 3 / 2 / 12;
+            padding-top: 50px;
+            padding-bottom: 100px;
+        }
+
+        .labProject {
+            padding-bottom: 50px;
+        }
+
+        .lab1 {
+            grid-area: 2 / 1 / 3 / 5;
+        }
+
+        .lab2 {
+            grid-area: 3 / 9 / 4 / 15;
+        }
+
+        .lab3 {
+            grid-area: 4 / 4 / 5 / 8;
+        }
+    }
+}
+
+// ------------------------------ About section ------------------------------
 
 #section-e {
     .vl {
