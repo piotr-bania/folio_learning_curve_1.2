@@ -20,11 +20,7 @@
 
 :root {
   --purple: #7161F5;
-  --purple-blue: #6286F5;
-  --blue-turquoise: #62B8F5;
-  --turquoise: #62EAF5;
   --green: #61F570;
-  --yellow: #E6F561;
   --red: #F57061;
   --darker: #040117;
   --dark: #07032E;
@@ -80,7 +76,7 @@ body {
   font-family: var(--body-font);
   font-size: var(--text-font-size);
   line-height: 1.6;
-  color: var(--light);
+  color: var(--grey-text);
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
@@ -89,28 +85,32 @@ body {
 
 h1 {
   font-family: var(--header-font);
-  font-size: clamp(1.215rem, 7vmin, 2.488rem);
-  line-height: 1.4;
-  color: var(--lighter);
+  font-size: 2.074rem;
+  line-height: 1.2;
+  color: var(--light);
+  padding-bottom: 10px;
 }
 
 h2 {
   font-family: var(--header-font);
-  font-size: clamp(1.138rem, 5.6vmin, 1.728rem);
-  line-height: 1.4;
-  color: var(--purple-blue);
+  font-size: 1.728rem;
+  line-height: 1.2;
+  color: var(--grey-text);
+  padding-bottom: 10px;
 }
 
 h3 {
   font-family: var(--header-font);
-  font-size: clamp(1.067rem, 4.5vmin, 1.2rem);
-  line-height: 1.4;
-  color: var(--blue-turquoise);
+  font-size: 1.44rem;
+  line-height: 1.2;
+  color: var(--red);
+  padding-bottom: 10px;
 }
 
 p {
   font-family: var(--body-font);
   font-size: var(--text-font-size);
+  line-height: 1.6;
 }
 
 a {
@@ -211,7 +211,8 @@ section {
 }
 
 #section-a {
-  background: radial-gradient(circle at 30% 60%, #0B0445 0%, #040117 100%);
+  background: -webkit-gradient(linear, left top, right top, from(var(--darker)), to(var(--dark)));
+  background: linear-gradient(to right, var(--darker), var(--dark));
 }
 
 #section-b,
@@ -271,7 +272,7 @@ section {
 }
 
 .menu a {
-  color: var(--light);
+  color: var(--grey-text);
 }
 
 .open-menu {
@@ -348,7 +349,7 @@ section {
   text-align: left;
   font-size: 1.65rem;
   font-family: var(--header-font);
-  color: var(--lighter);
+  color: var(--purple);
   padding-bottom: 20px;
 }
 
@@ -396,21 +397,6 @@ span {
   color: var(--purple);
 }
 
-.heroText {
-  position: absolute;
-  width: auto;
-  left: 17%;
-  bottom: 10%;
-}
-
-.upper-heading {
-  padding-bottom: 20px;
-}
-
-.lower-heading {
-  padding-bottom: 40px;
-}
-
 .text {
   color: var(--light);
 }
@@ -419,11 +405,44 @@ span {
   color: var(--green);
 }
 
+#section-a .container {
+  -ms-grid-columns: (1fr)[12];
+      grid-template-columns: repeat(12, 1fr);
+  -ms-grid-rows: (1fr)[2];
+      grid-template-rows: repeat(2, 1fr);
+}
+
+#section-a .container .heroText {
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 1;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 7;
+  grid-area: 2 / 2 / 3 / 9;
+}
+
+#section-a .container .upper-heading {
+  padding-bottom: 10px;
+}
+
+#section-a .container .lower-heading {
+  padding-bottom: 20px;
+}
+
 #section-b .container {
   -ms-grid-columns: (1fr)[12];
       grid-template-columns: repeat(12, 1fr);
-  -ms-grid-rows: (1fr)[12];
-      grid-template-rows: repeat(12, 1fr);
+  -ms-grid-rows: ()[12];
+      grid-template-rows: repeat(12);
+}
+
+#section-b .container .current,
+#section-b .container .other {
+  padding-top: 50px;
+  padding-bottom: 100px;
+}
+
+#section-b .container .project {
+  padding-bottom: 50px;
 }
 
 #section-b .container .current {
@@ -435,59 +454,59 @@ span {
 }
 
 #section-b .container .project1 {
-  -ms-grid-row: 3;
+  -ms-grid-row: 2;
   -ms-grid-row-span: 1;
   -ms-grid-column: 1;
   -ms-grid-column-span: 4;
-  grid-area: 3 / 1 / 4 / 5;
+  grid-area: 2 / 1 / 3 / 5;
 }
 
 #section-b .container .project2 {
-  -ms-grid-row: 4;
+  -ms-grid-row: 3;
   -ms-grid-row-span: 1;
   -ms-grid-column: 9;
   -ms-grid-column-span: 6;
-  grid-area: 4 / 9 / 5 / 15;
+  grid-area: 3 / 9 / 4 / 15;
 }
 
 #section-b .container .project3 {
-  -ms-grid-row: 5;
+  -ms-grid-row: 4;
   -ms-grid-row-span: 1;
   -ms-grid-column: 4;
   -ms-grid-column-span: 4;
-  grid-area: 5 / 4 / 6 / 8;
+  grid-area: 4 / 4 / 5 / 8;
 }
 
 #section-b .container .other {
-  -ms-grid-row: 7;
+  -ms-grid-row: 5;
   -ms-grid-row-span: 1;
   -ms-grid-column: 3;
   -ms-grid-column-span: 9;
-  grid-area: 7 / 3 / 8 / 12;
+  grid-area: 5 / 3 / 6 / 12;
 }
 
 #section-b .container .project4 {
-  -ms-grid-row: 9;
+  -ms-grid-row: 6;
   -ms-grid-row-span: 1;
   -ms-grid-column: 1;
   -ms-grid-column-span: 4;
-  grid-area: 9 / 1 / 10 / 5;
+  grid-area: 6 / 1 / 7 / 5;
 }
 
 #section-b .container .project5 {
-  -ms-grid-row: 10;
+  -ms-grid-row: 7;
   -ms-grid-row-span: 1;
   -ms-grid-column: 9;
   -ms-grid-column-span: 6;
-  grid-area: 10 / 9 / 11 / 15;
+  grid-area: 7 / 9 / 8 / 15;
 }
 
 #section-b .container .project6 {
-  -ms-grid-row: 11;
+  -ms-grid-row: 8;
   -ms-grid-row-span: 1;
   -ms-grid-column: 4;
   -ms-grid-column-span: 4;
-  grid-area: 11 / 4 / 12 / 8;
+  grid-area: 8 / 4 / 9 / 8;
 }
 
 #section-e .vl {
@@ -627,6 +646,8 @@ button:hover {
 }
 
 .progressNum {
+  font-family: var(--header-font);
+  font-size: var(--links-font-size);
   color: var(--grey-text);
   position: fixed;
   right: 10px;
@@ -658,6 +679,15 @@ button:hover {
 }
 
 @media screen and (min-width: 769px) and (max-width: 1279px) {
+  h1 {
+    font-size: 1.602rem;
+  }
+  h2 {
+    font-size: 1.424rem;
+  }
+  h3 {
+    font-size: 1.266rem;
+  }
   p {
     font-size: calc(var(--text-font-size) - 1px);
   }
@@ -666,26 +696,87 @@ button:hover {
     border-radius: 28px 9px 18px 9px;
     padding: 13px 26px;
   }
-  .heading {
-    width: 70%;
-    left: 15%;
+  #section-a .container {
+    -ms-grid-columns: (1fr)[12];
+        grid-template-columns: repeat(12, 1fr);
+    -ms-grid-rows: (1fr)[2];
+        grid-template-rows: repeat(2, 1fr);
   }
-  #section-b,
-  #section-c,
-  #section-d,
-  #section-e,
-  #section-f {
-    padding: 80px 0;
+  #section-a .container .heroText {
+    -ms-grid-row: 2;
+    -ms-grid-row-span: 1;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 11;
+    grid-area: 2 / 1 / 3 / 12;
   }
-  .heroText {
-    left: 14%;
-    bottom: 13%;
+  #section-b .container {
+    -ms-grid-columns: (1fr)[12];
+        grid-template-columns: repeat(12, 1fr);
+    -ms-grid-rows: ()[12];
+        grid-template-rows: repeat(12);
   }
-  .upper-heading {
-    padding-bottom: 15px;
+  #section-b .container .current,
+  #section-b .container .other {
+    padding-bottom: 100px;
   }
-  .lower-heading {
-    padding-bottom: 25px;
+  #section-b .container .project {
+    padding-bottom: 50px;
+  }
+  #section-b .container .current {
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 1;
+    -ms-grid-column: 2;
+    -ms-grid-column-span: 10;
+    grid-area: 1 / 2 / 2 / 12;
+  }
+  #section-b .container .project1 {
+    -ms-grid-row: 2;
+    -ms-grid-row-span: 1;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 6;
+    grid-area: 2 / 1 / 3 / 7;
+  }
+  #section-b .container .project2 {
+    -ms-grid-row: 3;
+    -ms-grid-row-span: 1;
+    -ms-grid-column: 7;
+    -ms-grid-column-span: 8;
+    grid-area: 3 / 7 / 4 / 15;
+  }
+  #section-b .container .project3 {
+    -ms-grid-row: 4;
+    -ms-grid-row-span: 1;
+    -ms-grid-column: 4;
+    -ms-grid-column-span: 6;
+    grid-area: 4 / 4 / 5 / 10;
+  }
+  #section-b .container .other {
+    -ms-grid-row: 5;
+    -ms-grid-row-span: 1;
+    -ms-grid-column: 2;
+    -ms-grid-column-span: 10;
+    grid-area: 5 / 2 / 6 / 12;
+  }
+  #section-b .container .project4 {
+    -ms-grid-row: 6;
+    -ms-grid-row-span: 1;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 6;
+    grid-area: 6 / 1 / 7 / 7;
+  }
+  #section-b .container .project5 {
+    -ms-grid-row: 7;
+    -ms-grid-row-span: 1;
+    -ms-grid-column: 7;
+    -ms-grid-column-span: 8;
+    grid-area: 7 / 7 / 8 / 15;
+  }
+  #section-b .container .project6 {
+    -ms-grid-row: 8;
+    -ms-grid-row-span: 1;
+    -ms-grid-column: 4;
+    -ms-grid-column-span: 6;
+    grid-area: 8 / 4 / 9 / 10;
   }
 }
 
@@ -709,6 +800,15 @@ button:hover {
   #nav-content a {
     font-size: 1.5rem;
   }
+  h1 {
+    font-size: 1.296rem;
+  }
+  h2 {
+    font-size: 1.215rem;
+  }
+  h3 {
+    font-size: 1.138rem;
+  }
   p {
     font-size: calc(var(--text-font-size) - 2px);
   }
@@ -721,13 +821,6 @@ button:hover {
     width: 80%;
     left: 10%;
   }
-  #section-b,
-  #section-c,
-  #section-d,
-  #section-e,
-  #section-f {
-    padding: 50px 0;
-  }
   .heroText {
     left: 11%;
     bottom: 16%;
@@ -738,8 +831,87 @@ button:hover {
   .lower-heading {
     padding-bottom: 20px;
   }
-  .project-item {
-    opacity: 100%;
+  #section-a .container {
+    -ms-grid-columns: (1fr)[12];
+        grid-template-columns: repeat(12, 1fr);
+    -ms-grid-rows: (1fr)[2];
+        grid-template-rows: repeat(2, 1fr);
+  }
+  #section-a .container .heroText {
+    -ms-grid-row: 2;
+    -ms-grid-row-span: 1;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 14;
+    grid-area: 2 / 1 / 3 / 15;
+  }
+  #section-b .container {
+    -ms-grid-columns: (1fr)[12];
+        grid-template-columns: repeat(12, 1fr);
+    -ms-grid-rows: ()[12];
+        grid-template-rows: repeat(12);
+  }
+  #section-b .container .current,
+  #section-b .container .other {
+    padding-bottom: 100px;
+  }
+  #section-b .container .project {
+    padding-bottom: 50px;
+  }
+  #section-b .container .current {
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 1;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 14;
+    grid-area: 1 / 1 / 2 / 15;
+  }
+  #section-b .container .project1 {
+    -ms-grid-row: 2;
+    -ms-grid-row-span: 1;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 14;
+    grid-area: 2 / 1 / 3 / 15;
+  }
+  #section-b .container .project2 {
+    -ms-grid-row: 3;
+    -ms-grid-row-span: 1;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 14;
+    grid-area: 3 / 1 / 4 / 15;
+  }
+  #section-b .container .project3 {
+    -ms-grid-row: 4;
+    -ms-grid-row-span: 1;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 14;
+    grid-area: 4 / 1 / 5 / 15;
+  }
+  #section-b .container .other {
+    -ms-grid-row: 5;
+    -ms-grid-row-span: 1;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 14;
+    grid-area: 5 / 1 / 6 / 15;
+  }
+  #section-b .container .project4 {
+    -ms-grid-row: 6;
+    -ms-grid-row-span: 1;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 14;
+    grid-area: 6 / 1 / 7 / 15;
+  }
+  #section-b .container .project5 {
+    -ms-grid-row: 7;
+    -ms-grid-row-span: 1;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 14;
+    grid-area: 7 / 1 / 8 / 15;
+  }
+  #section-b .container .project6 {
+    -ms-grid-row: 8;
+    -ms-grid-row-span: 1;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 14;
+    grid-area: 8 / 1 / 9 / 15;
   }
 }
 /*# sourceMappingURL=style.css.map */
