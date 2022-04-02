@@ -102,27 +102,27 @@ model_1.load('../src/assets/models/sphere/sphere.gltf', function (gltf) {
     gltf.scene.position.y = -modelsDistance * 0
 
     // Texture
-    const textureLoader = new THREE.TextureLoader()
-    const normalMapTexture = textureLoader.load("../src/assets/models/test/Marble06_4K_Normal.png")
-    const modelColorTexture = textureLoader.load('../src/assets/models/test/Marble06_4K_BaseColor.png')
-    normalMapTexture.wrapS = THREE.RepeatWrapping
-    normalMapTexture.wrapT = THREE.RepeatWrapping
+    // const textureLoader = new THREE.TextureLoader()
+    // const normalMapTexture = textureLoader.load("../src/assets/models/test/Marble06_4K_Normal.png")
+    // const modelColorTexture = textureLoader.load('../src/assets/models/test/Marble06_4K_BaseColor.png')
+    // normalMapTexture.wrapS = THREE.RepeatWrapping
+    // normalMapTexture.wrapT = THREE.RepeatWrapping
     
     
     // Material
-    const newMaterial = new THREE.MeshPhysicalMaterial({
-        color: 0x7161F5,
-        map: modelColorTexture,
-        normalMap: normalMapTexture,
-        clearcoatNormalMap: normalMapTexture,
-        metalness: 1,
-        roughness: 0,
-        transmission: 0,
-        thickness: 1,
-    })
-    model_1.traverse((o) => {
-        if (o.isMesh) o.material = newMaterial
-    })
+    // const newMaterial = new THREE.MeshPhysicalMaterial({
+    //     color: 0x7161F5,
+    //     map: modelColorTexture,
+    //     normalMap: normalMapTexture,
+    //     clearcoatNormalMap: normalMapTexture,
+    //     metalness: 1,
+    //     roughness: 0,
+    //     transmission: 0,
+    //     thickness: 1,
+    // })
+    // model_1.traverse((o) => {
+    //     if (o.isMesh) o.material = newMaterial
+    // })
 
     model_1.traverse(n => {
         if (n.isMesh) {

@@ -7,147 +7,74 @@
     "scenes" : [
         {
             "extras" : {
-                "by_tool" : {}
+                "uiListCollec" : [
+                    {
+                        "idx" : 0,
+                        "val" : 0.15021544694900513,
+                        "color" : [
+                            0.0,
+                            0.0,
+                            0.0,
+                            1.0
+                        ]
+                    },
+                    {
+                        "idx" : 1,
+                        "val" : 2.620821237564087,
+                        "color" : [
+                            1.0,
+                            1.0,
+                            1.0,
+                            1.0
+                        ]
+                    }
+                ]
             },
             "name" : "Scene",
             "nodes" : [
-                0
+                1
             ]
         }
     ],
     "nodes" : [
         {
-            "mesh" : 0,
-            "name" : "Torus.001"
-        }
-    ],
-    "materials" : [
+            "camera" : 0,
+            "name" : "Camera_Orientation",
+            "rotation" : [
+                -0.7071067690849304,
+                0,
+                0,
+                0.7071067690849304
+            ]
+        },
         {
-            "doubleSided" : true,
-            "name" : "Material.001",
-            "normalTexture" : {
-                "index" : 0
-            },
-            "pbrMetallicRoughness" : {
-                "baseColorFactor" : [
-                    0.16513200104236603,
-                    0.11953850090503693,
-                    0.9130989909172058,
-                    1
-                ],
-                "roughnessFactor" : 0.5
-            }
-        }
-    ],
-    "meshes" : [
-        {
-            "name" : "Torus.001",
-            "primitives" : [
-                {
-                    "attributes" : {
-                        "POSITION" : 0,
-                        "NORMAL" : 1,
-                        "TANGENT" : 2,
-                        "TEXCOORD_0" : 3
-                    },
-                    "indices" : 4,
-                    "material" : 0
-                }
+            "children" : [
+                0
+            ],
+            "name" : "Camera",
+            "rotation" : [
+                0.48353615403175354,
+                0.3368716239929199,
+                -0.20870371162891388,
+                0.7804825901985168
+            ],
+            "translation" : [
+                8.89702320098877,
+                6.55018424987793,
+                9.90816879272461
             ]
         }
     ],
-    "textures" : [
+    "cameras" : [
         {
-            "sampler" : 0,
-            "source" : 0
-        }
-    ],
-    "images" : [
-        {
-            "mimeType" : "image/png",
-            "name" : "Sphere normal",
-            "uri" : "Sphere%20normal.png"
-        }
-    ],
-    "accessors" : [
-        {
-            "bufferView" : 0,
-            "componentType" : 5126,
-            "count" : 126109,
-            "max" : [
-                1.2293477058410645,
-                1.2451049089431763,
-                1.2237348556518555
-            ],
-            "min" : [
-                -1.2284013032913208,
-                -1.314170241355896,
-                -1.2236154079437256
-            ],
-            "type" : "VEC3"
-        },
-        {
-            "bufferView" : 1,
-            "componentType" : 5126,
-            "count" : 126109,
-            "type" : "VEC3"
-        },
-        {
-            "bufferView" : 2,
-            "componentType" : 5126,
-            "count" : 126109,
-            "type" : "VEC4"
-        },
-        {
-            "bufferView" : 3,
-            "componentType" : 5126,
-            "count" : 126109,
-            "type" : "VEC2"
-        },
-        {
-            "bufferView" : 4,
-            "componentType" : 5125,
-            "count" : 192144,
-            "type" : "SCALAR"
-        }
-    ],
-    "bufferViews" : [
-        {
-            "buffer" : 0,
-            "byteLength" : 1513308,
-            "byteOffset" : 0
-        },
-        {
-            "buffer" : 0,
-            "byteLength" : 1513308,
-            "byteOffset" : 1513308
-        },
-        {
-            "buffer" : 0,
-            "byteLength" : 2017744,
-            "byteOffset" : 3026616
-        },
-        {
-            "buffer" : 0,
-            "byteLength" : 1008872,
-            "byteOffset" : 5044360
-        },
-        {
-            "buffer" : 0,
-            "byteLength" : 768576,
-            "byteOffset" : 6053232
-        }
-    ],
-    "samplers" : [
-        {
-            "magFilter" : 9729,
-            "minFilter" : 9987
-        }
-    ],
-    "buffers" : [
-        {
-            "byteLength" : 6821808,
-            "uri" : "untitled.bin"
+            "name" : "Camera.002",
+            "orthographic" : {
+                "xmag" : 6,
+                "ymag" : 6,
+                "zfar" : 1000,
+                "znear" : 0.10000000149011612
+            },
+            "type" : "orthographic"
         }
     ]
 }

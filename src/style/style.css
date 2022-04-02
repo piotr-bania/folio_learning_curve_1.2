@@ -195,7 +195,6 @@ section {
   background-position: left;
   background-repeat: no-repeat;
   background-size: contain;
-  z-index: 0;
 }
 
 #section-b,
@@ -213,7 +212,6 @@ section {
   background-position: left;
   background-repeat: no-repeat;
   background-size: contain;
-  z-index: 0;
 }
 
 #section-c,
@@ -229,7 +227,6 @@ section {
   background-position: right;
   background-repeat: no-repeat;
   background-size: contain;
-  z-index: 0;
 }
 
 #section-c h1,
