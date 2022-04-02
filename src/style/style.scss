@@ -83,7 +83,6 @@ html {
 }
 
 body {
-    // background-image: linear-gradient(to right, var(--darker), var(--dark));
     font-family: var(--body-font);
     font-size: var(--text-font-size);
     line-height: 1.6;
@@ -442,6 +441,12 @@ span {
 
         .project {
             padding-bottom: 50px;
+            z-index: 50;
+            img {
+                transform: translateX(50px);
+                transform: translateY(-50px);
+                z-index: 40;
+            }
         }
 
         .current {

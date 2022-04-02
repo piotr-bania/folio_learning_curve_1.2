@@ -443,6 +443,15 @@ span {
 
 #section-b .container .project {
   padding-bottom: 50px;
+  z-index: 50;
+}
+
+#section-b .container .project img {
+  -webkit-transform: translateX(50px);
+          transform: translateX(50px);
+  -webkit-transform: translateY(-50px);
+          transform: translateY(-50px);
+  z-index: 40;
 }
 
 #section-b .container .current {
