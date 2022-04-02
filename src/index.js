@@ -117,8 +117,8 @@ model_1.load('../src/assets/models/sphere/sphere.gltf', function (gltf) {
         clearcoatNormalMap: normalMapTexture,
         metalness: 1,
         roughness: 0,
-        transmission: 1,
-        thickness: 0,
+        transmission: 0,
+        thickness: 1,
     })
     model_1.traverse((o) => {
         if (o.isMesh) o.material = newMaterial

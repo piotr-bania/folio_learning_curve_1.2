@@ -155,10 +155,10 @@ section {
 
 #section-a {
     height: 100vh;
-    background-image: url(/src/assets/images/backgrounds/Piotr-Bania.svg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 100%;
+
+    .container {
+        background-image: url(/src/assets/images/backgrounds/PiotrBania.svg);
+    }
 
     h1 {
         color: var(--light);
@@ -168,70 +168,71 @@ section {
 #section-b {
     .container {
         background-image: url(/src/assets/images/backgrounds/Portfolio.svg);
-        background-position: left;
-        background-repeat: no-repeat;
-        background-size: contain;
     }
 }
 
 #section-c {
     .container {
         background-image: url(/src/assets/images/backgrounds/Lab.svg);
-        background-position: right;
-        background-repeat: no-repeat;
-        background-size: contain;
     }
 }
 
 #section-d {
     .container {
         background-image: url(/src/assets/images/backgrounds/Skills.svg);
-        background-position: left;
-        background-repeat: no-repeat;
-        background-size: contain;
     }
 }
 
 #section-e {
     .container {
         background-image: url(/src/assets/images/backgrounds/About.svg);
-        background-position: right;
-        background-repeat: no-repeat;
-        background-size: contain;
     }
 }
 
 #section-f {
     .container {
-        background-image: url(/src/assets/images/backgrounds/Contact.svg);
-        background-position: bottom;
-        background-repeat: no-repeat;
-        background-size: contain;
+        background-image: url(/src/assets/images/backgrounds/contact.svg);
     }
-}
-
-#section-b,
-#section-c,
-#section-d,
-#section-e,
-#section-f {
-    padding-top: 100px;
-    padding-bottom: 100px;
 }
 
 #section-a {
     background: linear-gradient(to right, var(--darker), var(--dark));
+
+    .container {
+        background-position: left;
+        background-repeat: no-repeat;
+        background-size: contain;
+        z-index: 0;
+    }
 }
 
 #section-b,
 #section-d,
 #section-f {
     background: linear-gradient(to left, var(--darker), var(--dark));
+    padding-top: 100px;
+    padding-bottom: 100px;
+
+    .container {
+        background-position: left;
+        background-repeat: no-repeat;
+        background-size: contain;
+        z-index: 0;
+    }
 }
 
 #section-c,
 #section-e {
     background-image: linear-gradient(to left, var(--lighter), var(--light));
+    padding-top: 100px;
+    padding-bottom: 100px;
+
+    .container {
+        background-position: right;
+        background-repeat: no-repeat;
+        background-size: contain;
+        z-index: 0;
+    }
 
     h1,
     p {
@@ -442,6 +443,7 @@ span {
         .project {
             padding-bottom: 50px;
             z-index: 50;
+
             img {
                 transform: translateX(50px);
                 transform: translateY(-50px);
