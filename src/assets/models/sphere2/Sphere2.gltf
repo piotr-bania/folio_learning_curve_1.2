@@ -39,16 +39,13 @@
     "nodes" : [
         {
             "mesh" : 0,
-            "name" : "Sphere"
+            "name" : "TwistedTorus"
         }
     ],
     "materials" : [
         {
             "doubleSided" : true,
             "name" : "Material",
-            "normalTexture" : {
-                "index" : 0
-            },
             "pbrMetallicRoughness" : {
                 "baseColorFactor" : [
                     0.16513200104236603,
@@ -62,113 +59,82 @@
     ],
     "meshes" : [
         {
-            "name" : "Torus",
+            "extras" : {
+                "TwistedTorus" : 1,
+                "change" : 0,
+                "major_radius" : 1.0,
+                "minor_radius" : 0.25,
+                "major_segments" : 48,
+                "minor_segments" : 12,
+                "twists" : 1,
+                "use_abso" : 0,
+                "abso_major_rad" : 1.0,
+                "abso_minor_rad" : 0.5
+            },
+            "name" : "TwistedTorus",
             "primitives" : [
                 {
                     "attributes" : {
                         "POSITION" : 0,
-                        "NORMAL" : 1,
-                        "TANGENT" : 2,
-                        "TEXCOORD_0" : 3
+                        "NORMAL" : 1
                     },
-                    "indices" : 4,
+                    "indices" : 2,
                     "material" : 0
                 }
             ]
-        }
-    ],
-    "textures" : [
-        {
-            "sampler" : 0,
-            "source" : 0
-        }
-    ],
-    "images" : [
-        {
-            "mimeType" : "image/png",
-            "name" : "Sphere normal",
-            "uri" : "Textures/Sphere%20normal.png"
         }
     ],
     "accessors" : [
         {
             "bufferView" : 0,
             "componentType" : 5126,
-            "count" : 73728,
+            "count" : 9216,
             "max" : [
-                1.2353026866912842,
-                1.2353029251098633,
-                1.2353025674819946
+                1.2346274852752686,
+                1.1596626043319702,
+                1.2346274852752686
             ],
             "min" : [
-                -1.2353029251098633,
-                -1.2353026866912842,
-                -1.2353026866912842
+                -1.2346274852752686,
+                -1.1596627235412598,
+                -1.2346274852752686
             ],
             "type" : "VEC3"
         },
         {
             "bufferView" : 1,
             "componentType" : 5126,
-            "count" : 73728,
+            "count" : 9216,
             "type" : "VEC3"
         },
         {
             "bufferView" : 2,
-            "componentType" : 5126,
-            "count" : 73728,
-            "type" : "VEC4"
-        },
-        {
-            "bufferView" : 3,
-            "componentType" : 5126,
-            "count" : 73728,
-            "type" : "VEC2"
-        },
-        {
-            "bufferView" : 4,
-            "componentType" : 5125,
-            "count" : 110592,
+            "componentType" : 5123,
+            "count" : 55296,
             "type" : "SCALAR"
         }
     ],
     "bufferViews" : [
         {
             "buffer" : 0,
-            "byteLength" : 884736,
+            "byteLength" : 110592,
             "byteOffset" : 0
         },
         {
             "buffer" : 0,
-            "byteLength" : 884736,
-            "byteOffset" : 884736
+            "byteLength" : 110592,
+            "byteOffset" : 110592
         },
         {
             "buffer" : 0,
-            "byteLength" : 1179648,
-            "byteOffset" : 1769472
-        },
-        {
-            "buffer" : 0,
-            "byteLength" : 589824,
-            "byteOffset" : 2949120
-        },
-        {
-            "buffer" : 0,
-            "byteLength" : 442368,
-            "byteOffset" : 3538944
-        }
-    ],
-    "samplers" : [
-        {
-            "magFilter" : 9729,
-            "minFilter" : 9987
+            "byteLength" : 110592,
+            "byteOffset" : 221184
         }
     ],
     "buffers" : [
         {
-            "byteLength" : 3981312,
-            "uri" : "Sphere.bin"
+            "byteLength" : 331776,
+            "uri" : "Sphere2.bin"
         }
     ]
 }

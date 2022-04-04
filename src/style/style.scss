@@ -156,9 +156,9 @@ section {
 #section-a {
     height: 100vh;
 
-    .container {
-        background-image: url(/src/assets/images/backgrounds/PiotrBania.svg);
-    }
+    // .container {
+    //     background-image: url(/src/assets/images/backgrounds/PiotrBania.svg);
+    // }
 
     h1 {
         color: var(--light);
@@ -238,8 +238,6 @@ section {
 }
 
 // ------------------------------ Header ------------------------------
-
-
 
 .logo {
     position: fixed;
@@ -444,7 +442,12 @@ span {
             img {
                 transform: translateX(50px);
                 transform: translateY(-50px);
-                z-index: 40;
+                opacity: 0.5;
+                transition: all 0.3s ease-in-out;
+            }
+
+            img:hover {
+                opacity: 1;
             }
         }
 
@@ -650,7 +653,7 @@ button {
     width: 1px;
     height: 100vh;
     background: linear-gradient(0deg, #7161F500 0%, #7161F54D 100%);
-    z-index: 0;
+    z-index: 50;
 }
 
 .one {

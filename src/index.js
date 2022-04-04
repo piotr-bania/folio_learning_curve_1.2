@@ -145,7 +145,7 @@ model_1.load('../src/assets/models/sphere/sphere.gltf', function (gltf) {
 
 // Model 2
 let model_2 = new GLTFLoader()
-model_2.load('../src/assets/models/sphere/sphere.gltf', function (gltf) {
+model_2.load('../src/assets/models/sphere2/sphere2.gltf', function (gltf) {
     model_2 = gltf.scene
     gltf.scene.scale.set(1, 1, 1)
     gltf.scene.position.set(1, 0, -2)
@@ -163,10 +163,10 @@ model_2.load('../src/assets/models/sphere/sphere.gltf', function (gltf) {
         color: 0x7161F5,
         map: modelColorTexture,
         normalMap: normalMapTexture,
-        metalness: 0.75,
-        roughness: 0.25,
-        transmission: 0.9,
-        thickness: 0.1,
+        metalness: 1,
+        roughness: 0,
+        transmission: 1,
+        thickness: 0.5,
     })
     model_2.traverse((o) => {
         if (o.isMesh) o.material = newMaterial
@@ -187,6 +187,7 @@ model_2.load('../src/assets/models/sphere/sphere.gltf', function (gltf) {
         duration: 500,
         delay: 0,
         x: -5,
+        y: 7,
         repeat: -1
     })
 })
@@ -260,7 +261,7 @@ const renderer = new THREE.WebGLRenderer({
 })
 
 renderer.toneMapping = THREE.ACESFilmicToneMapping
-renderer.toneMappingExposure = 0.4
+renderer.toneMappingExposure = 0.2
 renderer.outputEncoding = THREE.sRGBEncoding
 
 renderer.setSize(sizes.width, sizes.height)
