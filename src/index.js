@@ -90,14 +90,14 @@ camera.position.z = 6
 // ----------------- HDRI -----------------
 
 new RGBELoader()
-    .load("../src/assets/images/HDRI/the_lost_city_8k.hdr", function (texture) {
+    .load("../src/assets/images/HDRI/gamrig_4k.hdr", function (texture) {
         texture.mapping = THREE.EquirectangularReflectionMapping
         scene.environment = texture
     })
 
 // ----------------- 3d models -----------------
 
-let modelsDistance = 7
+let modelsDistance = 5
 
 // Model 1
 let model_1 = new GLTFLoader()
@@ -124,8 +124,8 @@ model_1.load('../src/assets/models/sphere2/sphere2.gltf', function (gltf) {
         clearcoatNormalMap: normalMapTexture,
         metalness: 1,
         roughness: 0,
-        transmission: 0,
-        thickness: 1,
+        transmission: 1,
+        thickness: 0,
     })
     model_1.traverse((o) => {
         if (o.isMesh) o.material = newMaterial
@@ -156,7 +156,7 @@ model_2.load('../src/assets/models/sphere2/sphere2.gltf', function (gltf) {
     model_2 = gltf.scene
     gltf.scene.scale.set(1, 1, 1)
     gltf.scene.position.set(0.5, 0, -1)
-    gltf.scene.position.y = -modelsDistance * 1
+    gltf.scene.position.y = -modelsDistance * 2.125
 
     // Texture
     const textureLoader = new THREE.TextureLoader()
@@ -173,8 +173,8 @@ model_2.load('../src/assets/models/sphere2/sphere2.gltf', function (gltf) {
         clearcoatNormalMap: normalMapTexture,
         metalness: 1,
         roughness: 0,
-        transmission: 0,
-        thickness: 1,
+        transmission: 1,
+        thickness: 0,
     })
     model_2.traverse((o) => {
         if (o.isMesh) o.material = newMaterial
@@ -205,8 +205,8 @@ let model_3 = new GLTFLoader()
 model_3.load('../src/assets/models/sphere2/sphere2.gltf', function (gltf) {
     model_3 = gltf.scene
     gltf.scene.scale.set(1, 1, 1)
-    gltf.scene.position.set(0.5, 0, -1)
-    gltf.scene.position.y = -modelsDistance * 2
+    gltf.scene.position.set(-2, 0, 1)
+    gltf.scene.position.y = -modelsDistance * 3.7
 
     // Texture
     const textureLoader = new THREE.TextureLoader()
@@ -217,14 +217,14 @@ model_3.load('../src/assets/models/sphere2/sphere2.gltf', function (gltf) {
 
     // Material
     const newMaterial = new THREE.MeshPhysicalMaterial({
-        color: 0xF57061,
+        color: 0x040117,
         map: modelColorTexture,
         normalMap: normalMapTexture,
         clearcoatNormalMap: normalMapTexture,
-        metalness: 1,
-        roughness: 0,
-        transmission: 0,
-        thickness: 1,
+        metalness: 0.9,
+        roughness: 0.1,
+        transmission: 0.9,
+        thickness: 0.1,
     })
     model_3.traverse((o) => {
         if (o.isMesh) o.material = newMaterial
@@ -256,7 +256,7 @@ model_4.load('../src/assets/models/sphere2/sphere2.gltf', function (gltf) {
     model_4 = gltf.scene
     gltf.scene.scale.set(1, 1, 1)
     gltf.scene.position.set(0.5, 0, -1)
-    gltf.scene.position.y = -modelsDistance * 3
+    gltf.scene.position.y = -modelsDistance * 4.75
 
     // Texture
     const textureLoader = new THREE.TextureLoader()
@@ -267,14 +267,14 @@ model_4.load('../src/assets/models/sphere2/sphere2.gltf', function (gltf) {
 
     // Material
     const newMaterial = new THREE.MeshPhysicalMaterial({
-        color: 0xF57061,
+        color: 0x61F570,
         map: modelColorTexture,
         normalMap: normalMapTexture,
         clearcoatNormalMap: normalMapTexture,
-        metalness: 1,
-        roughness: 0,
-        transmission: 0,
-        thickness: 1,
+        metalness: 0.9,
+        roughness: 0.1,
+        transmission: 0.9,
+        thickness: 0.1,
     })
     model_4.traverse((o) => {
         if (o.isMesh) o.material = newMaterial
@@ -299,157 +299,6 @@ model_4.load('../src/assets/models/sphere2/sphere2.gltf', function (gltf) {
         repeat: -1
     })
 })
-
-// Model 5
-let model_5 = new GLTFLoader()
-model_5.load('../src/assets/models/sphere2/sphere2.gltf', function (gltf) {
-    model_5 = gltf.scene
-    gltf.scene.scale.set(1, 1, 1)
-    gltf.scene.position.set(0.5, 0, -1)
-    gltf.scene.position.y = -modelsDistance * 4
-
-    // Texture
-    const textureLoader = new THREE.TextureLoader()
-    const normalMapTexture = textureLoader.load("../src/assets/models/test/Marble03_4K_Normal.png")
-    const modelColorTexture = textureLoader.load('../src/assets/models/test/Marble03_4K_BaseColor.png')
-    normalMapTexture.wrapS = THREE.RepeatWrapping
-    normalMapTexture.wrapT = THREE.RepeatWrapping
-
-    // Material
-    const newMaterial = new THREE.MeshPhysicalMaterial({
-        color: 0xF57061,
-        map: modelColorTexture,
-        normalMap: normalMapTexture,
-        clearcoatNormalMap: normalMapTexture,
-        metalness: 1,
-        roughness: 0,
-        transmission: 0,
-        thickness: 1,
-    })
-    model_5.traverse((o) => {
-        if (o.isMesh) o.material = newMaterial
-    })
-
-    model_5.traverse(n => {
-        if (n.isMesh) {
-            n.castShadow = true
-            n.receiveShadow = true
-            if (n.material.map) n.material.map.anisotropy = 16
-        }
-    })
-
-    scene.add(model_5)
-
-    // Animation
-    gsap.to(model_5.rotation, {
-        duration: 500,
-        delay: 0,
-        x: -5,
-        y: 7,
-        repeat: -1
-    })
-})
-
-// Model 6
-let model_6 = new GLTFLoader()
-model_6.load('../src/assets/models/sphere2/sphere2.gltf', function (gltf) {
-    model_6 = gltf.scene
-    gltf.scene.scale.set(1, 1, 1)
-    gltf.scene.position.set(0.5, 0, -1)
-    gltf.scene.position.y = -modelsDistance * 5
-
-    // Texture
-    const textureLoader = new THREE.TextureLoader()
-    const normalMapTexture = textureLoader.load("../src/assets/models/test/Marble03_4K_Normal.png")
-    const modelColorTexture = textureLoader.load('../src/assets/models/test/Marble03_4K_BaseColor.png')
-    normalMapTexture.wrapS = THREE.RepeatWrapping
-    normalMapTexture.wrapT = THREE.RepeatWrapping
-
-    // Material
-    const newMaterial = new THREE.MeshPhysicalMaterial({
-        color: 0xF57061,
-        map: modelColorTexture,
-        normalMap: normalMapTexture,
-        clearcoatNormalMap: normalMapTexture,
-        metalness: 1,
-        roughness: 0,
-        transmission: 0,
-        thickness: 1,
-    })
-    model_6.traverse((o) => {
-        if (o.isMesh) o.material = newMaterial
-    })
-
-    model_6.traverse(n => {
-        if (n.isMesh) {
-            n.castShadow = true
-            n.receiveShadow = true
-            if (n.material.map) n.material.map.anisotropy = 16
-        }
-    })
-
-    scene.add(model_6)
-
-    // Animation
-    gsap.to(model_6.rotation, {
-        duration: 500,
-        delay: 0,
-        x: -5,
-        y: 7,
-        repeat: -1
-    })
-})
-
-// Model 7
-let model_7 = new GLTFLoader()
-model_7.load('../src/assets/models/sphere2/sphere2.gltf', function (gltf) {
-    model_7 = gltf.scene
-    gltf.scene.scale.set(1, 1, 1)
-    gltf.scene.position.set(0.5, 0, -1)
-    gltf.scene.position.y = -modelsDistance * 6
-
-    // Texture
-    const textureLoader = new THREE.TextureLoader()
-    const normalMapTexture = textureLoader.load("../src/assets/models/test/Marble03_4K_Normal.png")
-    const modelColorTexture = textureLoader.load('../src/assets/models/test/Marble03_4K_BaseColor.png')
-    normalMapTexture.wrapS = THREE.RepeatWrapping
-    normalMapTexture.wrapT = THREE.RepeatWrapping
-
-    // Material
-    const newMaterial = new THREE.MeshPhysicalMaterial({
-        color: 0xF57061,
-        map: modelColorTexture,
-        normalMap: normalMapTexture,
-        clearcoatNormalMap: normalMapTexture,
-        metalness: 1,
-        roughness: 0,
-        transmission: 0,
-        thickness: 1,
-    })
-    model_7.traverse((o) => {
-        if (o.isMesh) o.material = newMaterial
-    })
-
-    model_7.traverse(n => {
-        if (n.isMesh) {
-            n.castShadow = true
-            n.receiveShadow = true
-            if (n.material.map) n.material.map.anisotropy = 16
-        }
-    })
-
-    scene.add(model_7)
-
-    // Animation
-    gsap.to(model_7.rotation, {
-        duration: 500,
-        delay: 0,
-        x: -5,
-        y: 7,
-        repeat: -1
-    })
-})
-
 
 // // Animated cube
 // let mixer
@@ -519,7 +368,7 @@ const renderer = new THREE.WebGLRenderer({
 })
 
 renderer.toneMapping = THREE.ACESFilmicToneMapping
-renderer.toneMappingExposure = 0.5
+renderer.toneMappingExposure = 1
 renderer.outputEncoding = THREE.sRGBEncoding
 
 renderer.setSize(sizes.width, sizes.height)
