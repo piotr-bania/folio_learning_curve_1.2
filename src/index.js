@@ -29,11 +29,11 @@ const scene = new THREE.Scene()
 
 // // Geometry
 // const particlesGeometry = new THREE.BufferGeometry()
-// const count = 10000
+// const count = 200000
 
 // const positions = new Float32Array(count * 3)
 // for (let i = 0; i < count * 3; i++) {
-//     positions[i] = (Math.random() - 0.5) * 10
+//     positions[i] = (Math.random() - 0.5) * 50
 // }
 
 // particlesGeometry.setAttribute(
@@ -53,6 +53,13 @@ const scene = new THREE.Scene()
 // const particles = new THREE.Points(particlesGeometry, particlesMaterial)
 // scene.add(particles)
 
+// gsap.to(particles.rotation, {
+//     duration: 500,
+//     delay: 0,
+//     y: -15,
+//     repeat: -1
+// })
+
 // ----------------- Sizes -----------------
 
 const sizes = {
@@ -69,21 +76,21 @@ camera.position.z = 6
 
 // ----------------- Lights -----------------
 
-const hemiLight = new THREE.HemisphereLight(0xffeeb1, 0x080820, 4)
-scene.add(hemiLight)
+// const hemiLight = new THREE.HemisphereLight(0xffeeb1, 0x080820, 4)
+// scene.add(hemiLight)
 
-const spotLight = new THREE.SpotLight(0xffffff, 4)
-spotLight.position.set(-50, 50, 50)
-spotLight.castShadow = true
-spotLight.shadow.bias = -0.0001
-spotLight.shadow.mapSize.width = 1024 * 4
-spotLight.shadow.mapSize.height = 1024 * 4
-scene.add(spotLight)
+// const spotLight = new THREE.SpotLight(0xffffff, 4)
+// spotLight.position.set(-50, 50, 50)
+// spotLight.castShadow = true
+// spotLight.shadow.bias = -0.0001
+// spotLight.shadow.mapSize.width = 1024 * 4
+// spotLight.shadow.mapSize.height = 1024 * 4
+// scene.add(spotLight)
 
 // ----------------- HDRI -----------------
 
 new RGBELoader()
-    .load("../src/assets/images/HDRI/the_lost_city_8k.hdr", function (texture) {
+    .load("../src/assets/images/HDRI/goegap_2k.hdr", function (texture) {
         texture.mapping = THREE.EquirectangularReflectionMapping
         scene.environment = texture
     })
@@ -93,55 +100,55 @@ new RGBELoader()
 let modelsDistance = 4
 
 // Model 1
-let model_1 = new GLTFLoader()
-model_1.load('../src/assets/models/sphere/sphere.gltf', function (gltf) {
-    // Model
-    model_1 = gltf.scene
-    gltf.scene.scale.set(1, 1, 1)
-    gltf.scene.position.set(0, 0, 0)
-    gltf.scene.position.y = -modelsDistance * 0
+// let model_1 = new GLTFLoader()
+// model_1.load('../src/assets/models/sphere/sphere.gltf', function (gltf) {
+//     // Model
+//     model_1 = gltf.scene
+//     gltf.scene.scale.set(1, 1, 1)
+//     gltf.scene.position.set(0, 0, 0)
+//     gltf.scene.position.y = -modelsDistance * 0
 
-    // Texture
-    // const textureLoader = new THREE.TextureLoader()
-    // const normalMapTexture = textureLoader.load("../src/assets/models/test/Marble06_4K_Normal.png")
-    // const modelColorTexture = textureLoader.load('../src/assets/models/test/Marble06_4K_BaseColor.png')
-    // normalMapTexture.wrapS = THREE.RepeatWrapping
-    // normalMapTexture.wrapT = THREE.RepeatWrapping
-    
-    
-    // Material
-    // const newMaterial = new THREE.MeshPhysicalMaterial({
-    //     color: 0x7161F5,
-    //     map: modelColorTexture,
-    //     normalMap: normalMapTexture,
-    //     clearcoatNormalMap: normalMapTexture,
-    //     metalness: 1,
-    //     roughness: 0,
-    //     transmission: 0,
-    //     thickness: 1,
-    // })
-    // model_1.traverse((o) => {
-    //     if (o.isMesh) o.material = newMaterial
-    // })
+//     // Texture
+//     // const textureLoader = new THREE.TextureLoader()
+//     // const normalMapTexture = textureLoader.load("../src/assets/models/test/Marble06_4K_Normal.png")
+//     // const modelColorTexture = textureLoader.load('../src/assets/models/test/Marble06_4K_BaseColor.png')
+//     // normalMapTexture.wrapS = THREE.RepeatWrapping
+//     // normalMapTexture.wrapT = THREE.RepeatWrapping
 
-    model_1.traverse(n => {
-        if (n.isMesh) {
-            n.castShadow = true
-            n.receiveShadow = true
-            if (n.material.map) n.material.map.anisotropy = 16
-        }
-    })
 
-    scene.add(model_1)
+//     // Material
+//     // const newMaterial = new THREE.MeshPhysicalMaterial({
+//     //     color: 0x7161F5,
+//     //     map: modelColorTexture,
+//     //     normalMap: normalMapTexture,
+//     //     clearcoatNormalMap: normalMapTexture,
+//     //     metalness: 1,
+//     //     roughness: 0,
+//     //     transmission: 0,
+//     //     thickness: 1,
+//     // })
+//     // model_1.traverse((o) => {
+//     //     if (o.isMesh) o.material = newMaterial
+//     // })
 
-    // Animation
-    gsap.to(model_1.rotation, {
-        duration: 500,
-        delay: 0,
-        y: -15,
-        repeat: -1
-    })
-})
+//     model_1.traverse(n => {
+//         if (n.isMesh) {
+//             n.castShadow = true
+//             n.receiveShadow = true
+//             if (n.material.map) n.material.map.anisotropy = 16
+//         }
+//     })
+
+//     scene.add(model_1)
+
+//     // Animation
+//     gsap.to(model_1.rotation, {
+//         duration: 500,
+//         delay: 0,
+//         y: -15,
+//         repeat: -1
+//     })
+// })
 
 // Model 2
 let model_2 = new GLTFLoader()
@@ -152,17 +159,17 @@ model_2.load('../src/assets/models/sphere2/sphere2.gltf', function (gltf) {
     gltf.scene.position.y = -modelsDistance * 1
 
     // Texture
-    const textureLoader = new THREE.TextureLoader()
-    const normalMapTexture = textureLoader.load("../src/assets/models/test/Marble03_4K_Normal.png")
-    const modelColorTexture = textureLoader.load('../src/assets/models/test/Marble03_4K_BaseColor.png')
-    normalMapTexture.wrapS = THREE.RepeatWrapping
-    normalMapTexture.wrapT = THREE.RepeatWrapping
-    
+    // const textureLoader = new THREE.TextureLoader()
+    // const normalMapTexture = textureLoader.load("../src/assets/models/test/Marble03_4K_Normal.png")
+    // const modelColorTexture = textureLoader.load('../src/assets/models/test/Marble03_4K_BaseColor.png')
+    // normalMapTexture.wrapS = THREE.RepeatWrapping
+    // normalMapTexture.wrapT = THREE.RepeatWrapping
+
     // Material
     const newMaterial = new THREE.MeshPhysicalMaterial({
-        color: 0x7161F5,
-        map: modelColorTexture,
-        normalMap: normalMapTexture,
+        color: 0x61F570,
+        // map: modelColorTexture,
+        // normalMap: normalMapTexture,
         metalness: 1,
         roughness: 0,
         transmission: 1,
@@ -210,7 +217,7 @@ model_2.load('../src/assets/models/sphere2/sphere2.gltf', function (gltf) {
 //     const modelColorTexture = textureLoader.load('../src/assets/models/test/Marble03_4K_BaseColor.png')
 //     normalMapTexture.wrapS = THREE.RepeatWrapping
 //     normalMapTexture.wrapT = THREE.RepeatWrapping
-    
+
 //     // Material
 //     const newMaterial = new THREE.MeshPhysicalMaterial({
 //         color: 0x7161F5,
@@ -261,7 +268,7 @@ const renderer = new THREE.WebGLRenderer({
 })
 
 renderer.toneMapping = THREE.ACESFilmicToneMapping
-renderer.toneMappingExposure = 0.2
+renderer.toneMappingExposure = 1
 renderer.outputEncoding = THREE.sRGBEncoding
 
 renderer.setSize(sizes.width, sizes.height)
@@ -324,11 +331,11 @@ tick()
 function animate() {
     requestAnimationFrame(animate)
 
-    spotLight.position.set(
-        camera.position.x + 10,
-        camera.position.y + 10,
-        camera.position.z + 10
-    )
+    // spotLight.position.set(
+    //     camera.position.x + 10,
+    //     camera.position.y + 10,
+    //     camera.position.z + 10
+    // )
 
     // controls.update()
     renderer.render(scene, camera)

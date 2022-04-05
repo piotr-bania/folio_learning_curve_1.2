@@ -126,6 +126,12 @@ a {
     text-shadow: var(--main-shadow);
     font-family: var(--header-font);
     font-size: var(--links-font-size);
+    color: var(--grey-text);
+    transition: all 0.3s ease-in-out;
+}
+
+a:hover {
+    color: var(--green);
 }
 
 // ------------------------------ Sections ------------------------------
@@ -156,9 +162,9 @@ section {
 #section-a {
     height: 100vh;
 
-    // .container {
-    //     background-image: url(/src/assets/images/backgrounds/PiotrBania.svg);
-    // }
+    .container {
+        background-image: url(/src/assets/images/backgrounds/PiotrBania.svg);
+    }
 
     h1 {
         color: var(--light);
@@ -266,11 +272,6 @@ section {
             padding-right: 3vw;
         }
     }
-
-    a {
-        color: var(--grey-text);
-    }
-
 }
 
 .open-menu {
@@ -382,15 +383,6 @@ b {
     color: var(--green);
 }
 
-a {
-    color: var(--light);
-    transition: all 0.3s ease-in-out;
-}
-
-a:hover {
-    color: var(--green);
-}
-
 span {
     color: var(--purple);
 }
@@ -427,7 +419,7 @@ span {
 #section-b {
     .container {
         grid-template-columns: repeat(12, 1fr);
-        grid-template-rows: repeat(12);
+        grid-template-rows: repeat(11);
 
         .current,
         .other {
@@ -440,14 +432,30 @@ span {
             z-index: 50;
 
             img {
-                transform: translateX(50px);
-                transform: translateY(-50px);
-                opacity: 0.5;
+                width: 80%;
+                margin-left: 20%;
+                border: 1px solid var(--purple);
+                border-radius: 20px;
+                opacity: 0.66;
+                filter: grayscale(100%);
                 transition: all 0.3s ease-in-out;
             }
 
             img:hover {
                 opacity: 1;
+                filter: grayscale(0%);
+                border-color: var(--green);
+            }
+
+            ul {
+                display: flex;
+                justify-content: space-between;
+                margin-left: 10%;
+                word-spacing: 5px;
+
+                a {
+                    padding-left: 50px;
+                }
             }
         }
 
@@ -456,31 +464,31 @@ span {
         }
 
         .project1 {
-            grid-area: 2 / 1 / 3 / 5;
+            grid-area: 2 / 1 / 4 / 5;
         }
 
         .project2 {
-            grid-area: 3 / 9 / 4 / 15;
+            grid-area: 3 / 9 / 5 / 15;
         }
 
         .project3 {
-            grid-area: 4 / 4 / 5 / 8;
+            grid-area: 4 / 4 / 6 / 8;
         }
 
         .other {
-            grid-area: 5 / 3 / 6 / 12;
+            grid-area: 6 / 3 / 7 / 12;
         }
 
         .project4 {
-            grid-area: 6 / 1 / 7 / 5;
+            grid-area: 7 / 1 / 9 / 5;
         }
 
         .project5 {
-            grid-area: 7 / 9 / 8 / 15;
+            grid-area: 8 / 9 / 10 / 15;
         }
 
         .project6 {
-            grid-area: 8 / 4 / 9 / 8;
+            grid-area: 9 / 4 / 11 / 8;
         }
     }
 }
@@ -490,7 +498,7 @@ span {
 #section-c {
     .container {
         grid-template-columns: repeat(12, 1fr);
-        grid-template-rows: repeat(6);
+        grid-template-rows: repeat(2);
 
         .lab {
             grid-area: 1 / 3 / 2 / 12;
@@ -500,6 +508,34 @@ span {
 
         .labProject {
             padding-bottom: 50px;
+            margin: auto;
+
+            img {
+                width: 80%;
+                margin-left: 10%;
+                border: 1px solid var(--purple);
+                border-radius: 20px;
+                opacity: 0.66;
+                filter: grayscale(100%);
+                transition: all 0.3s ease-in-out;
+            }
+
+            img:hover {
+                opacity: 1;
+                filter: grayscale(0%);
+                border-color: var(--green);
+            }
+
+            ul {
+                display: flex;
+                justify-content: space-between;
+                margin-right: 10%;
+                word-spacing: 5px;
+
+                a {
+                    padding-left: 50px;
+                }
+            }
         }
 
         .lab1 {
@@ -507,11 +543,11 @@ span {
         }
 
         .lab2 {
-            grid-area: 3 / 9 / 4 / 15;
+            grid-area: 2 / 5 / 3 / 9;
         }
 
         .lab3 {
-            grid-area: 4 / 4 / 5 / 8;
+            grid-area: 2 / 9 / 3 / 14;
         }
     }
 }
@@ -754,6 +790,25 @@ button {
             }
         }
     }
+
+    #section-c {
+        .container {
+            grid-template-columns: repeat(12, 1fr);
+            grid-template-rows: repeat(6);
+
+            .lab1 {
+                grid-area: 2 / 1 / 3 / 7;
+            }
+    
+            .lab2 {
+                grid-area: 2 / 7 / 3 / 13;
+            }
+    
+            .lab3 {
+                grid-area: 3 / 4 / 4 / 10;
+            }
+        }
+    }
 }
 
 @media screen and (max-width: 768px) {
@@ -844,6 +899,16 @@ button {
 
             .project {
                 padding-bottom: 50px;
+
+                img {
+                    margin-left: 10%;
+                    opacity: 1;
+                }
+
+                ul {
+                    margin-left: 0%;
+                    margin-right: 10%;
+                }
             }
 
             .current {
@@ -876,6 +941,39 @@ button {
 
             .project6 {
                 grid-area: 8 / 1 / 9 / 15;
+            }
+        }
+    }
+
+    #section-c {
+        .container {
+            grid-template-columns: repeat(12, 1fr);
+            grid-template-rows: repeat(12);
+
+            .lab1 {
+                grid-area: 2 / 1 / 3 / 15;
+            }
+    
+            .lab2 {
+                grid-area: 3 / 1 / 4 / 15;
+            }
+    
+            .lab3 {
+                grid-area: 4 / 1 / 5 / 15;
+            }
+
+            .labProject {
+                padding-bottom: 50px;
+
+                img {
+                    margin-left: 10%;
+                    opacity: 1;
+                }
+
+                ul {
+                    margin-left: 0%;
+                    margin-right: 10%;
+                }
             }
         }
     }
