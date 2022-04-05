@@ -279,6 +279,11 @@ section {
   padding-right: 3vw;
 }
 
+.menu button {
+  -webkit-transform: translateY(-8px);
+          transform: translateY(-8px);
+}
+
 .open-menu {
   position: fixed;
   right: 5%;
@@ -518,24 +523,24 @@ span {
   -ms-grid-row: 7;
   -ms-grid-row-span: 2;
   -ms-grid-column: 1;
-  -ms-grid-column-span: 4;
-  grid-area: 7 / 1 / 9 / 5;
+  -ms-grid-column-span: 5;
+  grid-area: 7 / 1 / 9 / 6;
 }
 
 #section-b .container .project5 {
   -ms-grid-row: 8;
   -ms-grid-row-span: 2;
-  -ms-grid-column: 9;
-  -ms-grid-column-span: 6;
-  grid-area: 8 / 9 / 10 / 15;
+  -ms-grid-column: 8;
+  -ms-grid-column-span: 7;
+  grid-area: 8 / 8 / 10 / 15;
 }
 
 #section-b .container .project6 {
   -ms-grid-row: 9;
   -ms-grid-row-span: 2;
-  -ms-grid-column: 4;
-  -ms-grid-column-span: 4;
-  grid-area: 9 / 4 / 11 / 8;
+  -ms-grid-column: 3;
+  -ms-grid-column-span: 5;
+  grid-area: 9 / 3 / 11 / 8;
 }
 
 #section-c .container {
@@ -668,7 +673,7 @@ button {
   text-shadow: var(--main-shadow);
   white-space: nowrap;
   border: 1px solid var(--dark);
-  background: linear-gradient(-45deg, #7161F5 0%, #190AA1 100%);
+  background: linear-gradient(-45deg, #7161F5 0%, #0E065C 100%);
   background-size: 400% 400%;
   -webkit-animation: animate 5s ease-in-out infinite;
           animation: animate 5s ease-in-out infinite;

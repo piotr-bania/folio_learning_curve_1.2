@@ -24,41 +24,41 @@ const scene = new THREE.Scene()
 
 // ----------------- Particles -----------------
 
-// const textureLoader = new THREE.TextureLoader()
-// const particleTexture = textureLoader.load('../src/assets/particles/twirl_03.png')
+const textureLoader = new THREE.TextureLoader()
+const particleTexture = textureLoader.load('../src/assets/particles/twirl_03.png')
 
-// // Geometry
-// const particlesGeometry = new THREE.BufferGeometry()
-// const count = 200000
+// Geometry
+const particlesGeometry = new THREE.BufferGeometry()
+const count = 20000
 
-// const positions = new Float32Array(count * 3)
-// for (let i = 0; i < count * 3; i++) {
-//     positions[i] = (Math.random() - 0.5) * 50
-// }
+const positions = new Float32Array(count * 3)
+for (let i = 0; i < count * 3; i++) {
+    positions[i] = (Math.random() - 0.5) * 100
+}
 
-// particlesGeometry.setAttribute(
-//     'position',
-//     new THREE.BufferAttribute(positions, 3)
-// )
+particlesGeometry.setAttribute(
+    'position',
+    new THREE.BufferAttribute(positions, 3)
+)
 
-// // Material
-// const particlesMaterial = new THREE.PointsMaterial()
-// particlesMaterial.size = 0.05
-// particlesMaterial.sizeAttenuation = true
-// particlesMaterial.color = new THREE.Color('#7161F5')
-// particlesMaterial.transparent = true
-// particlesMaterial.alphaMap = particleTexture
+// Material
+const particlesMaterial = new THREE.PointsMaterial()
+particlesMaterial.size = 0.25
+particlesMaterial.sizeAttenuation = true
+particlesMaterial.color = new THREE.Color('#7161F5')
+particlesMaterial.transparent = true
+particlesMaterial.alphaMap = particleTexture
 
-// // Points
-// const particles = new THREE.Points(particlesGeometry, particlesMaterial)
-// scene.add(particles)
+// Points
+const particles = new THREE.Points(particlesGeometry, particlesMaterial)
+scene.add(particles)
 
-// gsap.to(particles.rotation, {
-//     duration: 500,
-//     delay: 0,
-//     y: -15,
-//     repeat: -1
-// })
+gsap.to(particles.rotation, {
+    duration: 1000,
+    delay: 0,
+    y: -5,
+    repeat: -1
+})
 
 // ----------------- Sizes -----------------
 
@@ -205,8 +205,8 @@ let model_3 = new GLTFLoader()
 model_3.load('../src/assets/models/sphere2/sphere2.gltf', function (gltf) {
     model_3 = gltf.scene
     gltf.scene.scale.set(1, 1, 1)
-    gltf.scene.position.set(-2, 0, 1)
-    gltf.scene.position.y = -modelsDistance * 3.7
+    gltf.scene.position.set(-2.5, 0, -1)
+    gltf.scene.position.y = -modelsDistance * 3.9
 
     // Texture
     const textureLoader = new THREE.TextureLoader()
@@ -244,8 +244,8 @@ model_3.load('../src/assets/models/sphere2/sphere2.gltf', function (gltf) {
     gsap.to(model_3.rotation, {
         duration: 500,
         delay: 0,
-        x: -5,
-        y: 7,
+        y: -5,
+        z: 7,
         repeat: -1
     })
 })
@@ -255,7 +255,7 @@ let model_4 = new GLTFLoader()
 model_4.load('../src/assets/models/sphere2/sphere2.gltf', function (gltf) {
     model_4 = gltf.scene
     gltf.scene.scale.set(1, 1, 1)
-    gltf.scene.position.set(0.5, 0, -1)
+    gltf.scene.position.set(0.5, 0, -2)
     gltf.scene.position.y = -modelsDistance * 4.75
 
     // Texture
