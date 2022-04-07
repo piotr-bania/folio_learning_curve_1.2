@@ -90,7 +90,7 @@ camera.position.z = 6
 // ----------------- HDRI -----------------
 
 new RGBELoader()
-    .load("../src/assets/images/HDRI/gamrig_4k.hdr", function (texture) {
+    .load("../src/assets/images/HDRI/gamrig_1k.hdr", function (texture) {
         texture.mapping = THREE.EquirectangularReflectionMapping
         scene.environment = texture
     })
@@ -459,4 +459,4 @@ function onWindowResize() {
     // Casting shadows
     renderer.shadowMap.enabled = true
 }
-window.addEventListener('resize', onWindowResize, false);
+window.addEventListener('resize', onWindowResize, false)
