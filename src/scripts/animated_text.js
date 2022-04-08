@@ -1,10 +1,10 @@
 // ----------------- Header animation -----------------
 
 const words = [
-    "develop apps",
+    "develop web apps",
+    "build mobile apps",
     "shape Metaverse",
     "design in 3D",
-    "build websites",
     "create things"
 ]
 

@@ -109,19 +109,19 @@ model_1.load('../src/assets/models/sphere2/sphere2.gltf', function (gltf) {
     gltf.scene.position.y = -modelsDistance * 0
 
     // Texture
-    const textureLoader = new THREE.TextureLoader()
-    const normalMapTexture = textureLoader.load("../src/assets/models/test/Marble06_4K_Normal.png")
-    const modelColorTexture = textureLoader.load('../src/assets/models/test/Marble06_4K_BaseColor.png')
-    normalMapTexture.wrapS = THREE.RepeatWrapping
-    normalMapTexture.wrapT = THREE.RepeatWrapping
+    // const textureLoader = new THREE.TextureLoader()
+    // const normalMapTexture = textureLoader.load("../src/assets/models/test/Marble06_4K_Normal.png")
+    // const modelColorTexture = textureLoader.load('../src/assets/models/test/Marble06_4K_BaseColor.png')
+    // normalMapTexture.wrapS = THREE.RepeatWrapping
+    // normalMapTexture.wrapT = THREE.RepeatWrapping
 
 
     // Material
     const newMaterial = new THREE.MeshPhysicalMaterial({
         color: 0x7161F5,
-        map: modelColorTexture,
-        normalMap: normalMapTexture,
-        clearcoatNormalMap: normalMapTexture,
+        // map: modelColorTexture,
+        // normalMap: normalMapTexture,
+        // clearcoatNormalMap: normalMapTexture,
         metalness: 1,
         roughness: 0,
         transmission: 1,
@@ -155,22 +155,12 @@ let model_2 = new GLTFLoader()
 model_2.load('../src/assets/models/sphere2/sphere2.gltf', function (gltf) {
     model_2 = gltf.scene
     gltf.scene.scale.set(1, 1, 1)
-    gltf.scene.position.set(0.5, 0, -1)
-    gltf.scene.position.y = -modelsDistance * 2.125
-
-    // Texture
-    const textureLoader = new THREE.TextureLoader()
-    const normalMapTexture = textureLoader.load("../src/assets/models/test/Marble03_4K_Normal.png")
-    const modelColorTexture = textureLoader.load('../src/assets/models/test/Marble03_4K_BaseColor.png')
-    normalMapTexture.wrapS = THREE.RepeatWrapping
-    normalMapTexture.wrapT = THREE.RepeatWrapping
+    gltf.scene.position.set(-0.5, 0, -3)
+    gltf.scene.position.y = -modelsDistance * 1
 
     // Material
     const newMaterial = new THREE.MeshPhysicalMaterial({
         color: 0xF57061,
-        map: modelColorTexture,
-        normalMap: normalMapTexture,
-        clearcoatNormalMap: normalMapTexture,
         metalness: 1,
         roughness: 0,
         transmission: 1,
@@ -205,22 +195,12 @@ let model_3 = new GLTFLoader()
 model_3.load('../src/assets/models/sphere2/sphere2.gltf', function (gltf) {
     model_3 = gltf.scene
     gltf.scene.scale.set(1, 1, 1)
-    gltf.scene.position.set(-2.5, 0, -1)
-    gltf.scene.position.y = -modelsDistance * 3.9
-
-    // Texture
-    const textureLoader = new THREE.TextureLoader()
-    const normalMapTexture = textureLoader.load("../src/assets/models/test/Marble03_4K_Normal.png")
-    const modelColorTexture = textureLoader.load('../src/assets/models/test/Marble03_4K_BaseColor.png')
-    normalMapTexture.wrapS = THREE.RepeatWrapping
-    normalMapTexture.wrapT = THREE.RepeatWrapping
+    gltf.scene.position.set(-2, 0, -1)
+    gltf.scene.position.y = -modelsDistance * 2
 
     // Material
     const newMaterial = new THREE.MeshPhysicalMaterial({
-        color: 0x040117,
-        map: modelColorTexture,
-        normalMap: normalMapTexture,
-        clearcoatNormalMap: normalMapTexture,
+        color: 0x61F570,
         metalness: 0.9,
         roughness: 0.1,
         transmission: 0.9,
@@ -255,22 +235,12 @@ let model_4 = new GLTFLoader()
 model_4.load('../src/assets/models/sphere2/sphere2.gltf', function (gltf) {
     model_4 = gltf.scene
     gltf.scene.scale.set(1, 1, 1)
-    gltf.scene.position.set(0.5, 0, -2)
-    gltf.scene.position.y = -modelsDistance * 4.75
-
-    // Texture
-    const textureLoader = new THREE.TextureLoader()
-    const normalMapTexture = textureLoader.load("../src/assets/models/test/Marble03_4K_Normal.png")
-    const modelColorTexture = textureLoader.load('../src/assets/models/test/Marble03_4K_BaseColor.png')
-    normalMapTexture.wrapS = THREE.RepeatWrapping
-    normalMapTexture.wrapT = THREE.RepeatWrapping
+    gltf.scene.position.set(0.5, 0, -4)
+    gltf.scene.position.y = -modelsDistance * 2.75
 
     // Material
     const newMaterial = new THREE.MeshPhysicalMaterial({
-        color: 0x61F570,
-        map: modelColorTexture,
-        normalMap: normalMapTexture,
-        clearcoatNormalMap: normalMapTexture,
+        color: 0x7161F5,
         metalness: 0.9,
         roughness: 0.1,
         transmission: 0.9,
@@ -299,6 +269,128 @@ model_4.load('../src/assets/models/sphere2/sphere2.gltf', function (gltf) {
         repeat: -1
     })
 })
+
+// Model 5
+let model_5 = new GLTFLoader()
+model_5.load('../src/assets/models/sphere2/sphere2.gltf', function (gltf) {
+    model_5 = gltf.scene
+    gltf.scene.scale.set(1, 1, 1)
+    gltf.scene.position.set(-2.5, 0, -1)
+    gltf.scene.position.y = -modelsDistance * 3.6
+
+    // Material
+    const newMaterial = new THREE.MeshPhysicalMaterial({
+        color: 0x040117,
+        metalness: 0.9,
+        roughness: 0.1,
+        transmission: 0.9,
+        thickness: 0.1,
+    })
+    model_5.traverse((o) => {
+        if (o.isMesh) o.material = newMaterial
+    })
+
+    model_5.traverse(n => {
+        if (n.isMesh) {
+            n.castShadow = true
+            n.receiveShadow = true
+            if (n.material.map) n.material.map.anisotropy = 16
+        }
+    })
+
+    scene.add(model_5)
+
+    // Animation
+    gsap.to(model_5.rotation, {
+        duration: 500,
+        delay: 0,
+        x: -5,
+        y: 7,
+        repeat: -1
+    })
+})
+
+// Model 6
+let model_6 = new GLTFLoader()
+model_6.load('../src/assets/models/sphere2/sphere2.gltf', function (gltf) {
+    model_6 = gltf.scene
+    gltf.scene.scale.set(1, 1, 1)
+    gltf.scene.position.set(-1, 0, -1)
+    gltf.scene.position.y = -modelsDistance * 4.65
+
+    // Material
+    const newMaterial = new THREE.MeshPhysicalMaterial({
+        color: 0x61F570,
+        metalness: 0.9,
+        roughness: 0.1,
+        transmission: 0.9,
+        thickness: 0.1,
+    })
+    model_6.traverse((o) => {
+        if (o.isMesh) o.material = newMaterial
+    })
+
+    model_6.traverse(n => {
+        if (n.isMesh) {
+            n.castShadow = true
+            n.receiveShadow = true
+            if (n.material.map) n.material.map.anisotropy = 16
+        }
+    })
+
+    scene.add(model_6)
+
+    // Animation
+    gsap.to(model_6.rotation, {
+        duration: 500,
+        delay: 0,
+        x: -5,
+        y: 7,
+        repeat: -1
+    })
+})
+
+// Model 7
+let model_7 = new GLTFLoader()
+model_7.load('../src/assets/models/sphere2/sphere2.gltf', function (gltf) {
+    model_7 = gltf.scene
+    gltf.scene.scale.set(1, 1, 1)
+    gltf.scene.position.set(-2.5, 0, -1.5)
+    gltf.scene.position.y = -modelsDistance * 5.65
+
+    // Material
+    const newMaterial = new THREE.MeshPhysicalMaterial({
+        color: 0x040117,
+        metalness: 0.9,
+        roughness: 0.1,
+        transmission: 0.9,
+        thickness: 0.1,
+    })
+    model_7.traverse((o) => {
+        if (o.isMesh) o.material = newMaterial
+    })
+
+    model_7.traverse(n => {
+        if (n.isMesh) {
+            n.castShadow = true
+            n.receiveShadow = true
+            if (n.material.map) n.material.map.anisotropy = 16
+        }
+    })
+
+    scene.add(model_7)
+
+    // Animation
+    gsap.to(model_7.rotation, {
+        duration: 500,
+        delay: 0,
+        x: -5,
+        y: 7,
+        repeat: -1
+    })
+})
+
+
 
 // // Animated cube
 // let mixer
